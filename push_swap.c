@@ -6,7 +6,7 @@
 /*   By: aolabarr <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 19:23:20 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/04/27 16:55:03 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/04/27 16:59:59 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,12 +24,10 @@ int	main(int ac, char **av)
 		return (0);
 	else if  (ac > 2 || check_errors(av[1]) == -1)
 		return (ft_putstr_fd(ERROR_MESSAGE, STDERR), 0);
-	else if (ac == 2)
-	{
-		stack_a = create_stack(av[1]);
-		if (stack_a == NULL)
-			return (ft_putstr_fd(ERROR_MESSAGE, STDERR), 0);
-	}
+	stack_a = create_stack(av[1]);
+	if (stack_a == NULL)
+		return (ft_putstr_fd(ERROR_MESSAGE, STDERR), 0);
+
 	i = 0;
 	head = stack_a;
 	while (stack_a -> next != NULL)
