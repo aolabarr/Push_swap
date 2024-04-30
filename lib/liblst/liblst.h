@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   liblst.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:40:19 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/04/27 13:32:17 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/05/01 00:59:11 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,8 @@
 
 typedef struct s_list
 {
+	int				idx;
+	int				cost;
 	int				content;
 	struct s_list	*next;
 }					t_list;

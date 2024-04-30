@@ -1,12 +1,12 @@
 # **************************************************************************** #
 #                                                                              #
 #                                                         :::      ::::::::    #
-#    makefile                                           :+:      :+:    :+:    #
+#    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: aolabarr <marvin@42.fr>                    +#+  +:+       +#+         #
+#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/17 15:08:51 by aolabarr          #+#    #+#              #
-#    Updated: 2024/04/27 14:19:19 by aolabarr         ###   ########.fr        #
+#    Updated: 2024/05/01 00:23:02 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,18 +16,22 @@ CC = cc
 OBJ_CREATE = -c
 CFLAGS = -Wall -Wextra -Werror
 
-INC_DIR = ./src
-LIBFT_DIR = ./src/libft
-LIBLST_DIR = ./src/liblst
+INC_DIR = ./lib
+LIBFT_DIR = ./lib/libft
+LIBLST_DIR = ./lib/liblst
 
 SRC =	push_swap.c \
+		push_swap_errors.c\
+		push_swap_arrays.c\
+		push_swap_lists.c\
 
 OBJS = $(SRC:.c=.o)
 
 all: lib $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) -L$(LIBFT_DIR) -L$(LIBLST_DIR) -lft -llst $(OBJS) -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -L$(LIBLST_DIR) -lft -llst -o $(NAME)
+#$(CC) $(CFLAGS) libft.a $(OBJS) -o $(NAME)
 
 %.o: %.c
 	$(CC) $(OBJ_CREATE) $(CFLAGS) -I$(INC_DIR) $< -o $@
