@@ -6,7 +6,7 @@
 #    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/17 15:08:51 by aolabarr          #+#    #+#              #
-#    Updated: 2024/05/01 00:23:02 by marvin           ###   ########.fr        #
+#    Updated: 2024/05/01 20:52:20 by marvin           ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,10 +20,13 @@ INC_DIR = ./lib
 LIBFT_DIR = ./lib/libft
 LIBLST_DIR = ./lib/liblst
 
-SRC =	push_swap.c \
+SRC =	push_swap_main.c \
 		push_swap_errors.c\
 		push_swap_arrays.c\
 		push_swap_lists.c\
+		push_swap_orders.c\
+		push_swap_free.c\
+		push_swap_utils.c\
 
 OBJS = $(SRC:.c=.o)
 

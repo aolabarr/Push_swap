@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 13:39:09 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/05/01 01:11:31 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/01 21:04:29 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 # define STDOUT 1
 # define STDERR 2
 # define ERROR_MESSAGE "Error\n"
+# define PARTS 2
 
 # include <stdio.h>
 # include <unistd.h>
@@ -29,19 +30,34 @@
 # include "lib/liblst/liblst.h"
 
 t_list	*create_stack(char *str);
-int     *create_array(t_list *stack);
 void	put_sorted_index(t_list *stack);
+
 int     check_errors(char *str);
-void	ft_free_mat(char **mat, size_t size);
+int     ft_str_is_numeric(char *str);
+int     ft_is_int(char *str);
+int     ft_str_norepeat_in_mat(char **ptr);
+
+t_list *push_swap(t_list **stack_a);
+
+void	ft_free_mat(char **mat);
 void	ft_free_array(int **array);
 
 size_t	ft_matsize(char **str);
-int     ft_str_is_numeric(char *str);
 void    ft_lst_putnbr_fd(t_list *lst, int fd);
 int     ft_lst_is_sorted(t_list *lst);
+
+int     *create_array(t_list *stack);
 void	ft_bubble_sort(int *array, int size);
 int     ft_array_is_sorted(int *array, int size);
 void	ft_swap_nbr(int *a, int *b);
+
+void    swap(t_list **stack, char id);
+void    rotate(t_list *stack, char id);
+void    rev_rotate(t_list *stack, char id);
+void    push_b(t_list *stack_a, t_list *stack_b);
+void    push_a(t_list *stack_b, t_list *stack_a);
+
+
 
 
 #endif

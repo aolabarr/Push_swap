@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ftps_lstnew.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 16:54:46 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/04/27 13:32:21 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/05/01 20:07:44 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ t_list	*ftps_lstnew(int content)
 	node = malloc(sizeof(t_list));
 	if (!node)
 		return (NULL);
+	node -> idx = 0;
 	node -> content = content;
 	node -> next = NULL;
 	return (node);

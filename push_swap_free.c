@@ -1,0 +1,24 @@
+
+#include "push_swap.h"
+
+void	ft_free_mat(char **mat)
+{
+	size_t	size;
+
+	size = ft_matsize(mat);
+	while (size)
+	{
+		free(mat[size]);
+		size--;
+	}
+	free(mat[0]);
+	free(mat);
+	return ;
+}
+
+void	ft_free_array(int **array)
+{
+	if (*array)
+		free(*array);
+	*array = NULL;
+}

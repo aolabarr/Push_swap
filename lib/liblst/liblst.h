@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 16:40:19 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/05/01 00:59:11 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/01 20:17:22 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,20 @@
 # define LIBLST_H
 
 # include <stdlib.h>
-# include <unistd.h>
+
+typedef struct s_cost
+{
+	int		total;
+	int		ra;
+	int		rb;
+	int		rra;
+	int		rrb;
+}			t_cost;
 
 typedef struct s_list
 {
 	int				idx;
-	int				cost;
+	t_cost			cost;
 	int				content;
 	struct s_list	*next;
 }					t_list;
@@ -31,7 +39,4 @@ t_list	*ftps_lstlast(t_list *lst);
 void	ftps_lstadd_back(t_list **lst, t_list *new);
 void	ftps_lstdelone(t_list *lst, void (*del)(void *));
 void	ftps_lstclear(t_list **lst, void (*del)(void *));
-void	ftps_lstiter(t_list *lst, void (*f)(void *));
-t_list	*ftps_lstmap(t_list *lst, void *(*f)(void *), void (*del)(void *));
-
 #endif
