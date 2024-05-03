@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_errors.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 20:46:56 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/05/01 20:41:00 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/03 14:01:43 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	check_errors(char *str)
 	size_t	i;
 	char	**ptr;
 
-	if (!str)
+	if (!str || *str == '\0')
 		return (-1);
 	ptr = ft_split(str, ' ');
 	i = 0;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 13:39:09 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/05/01 21:04:29 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/03 19:13:30 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,13 +21,13 @@
 # define STDOUT 1
 # define STDERR 2
 # define ERROR_MESSAGE "Error\n"
-# define PARTS 2
+# define PARTS 1
 
 # include <stdio.h>
 # include <unistd.h>
 # include <stdlib.h> 
-# include "lib/libft/libft.h"
-# include "lib/liblst/liblst.h"
+# include "../lib/libft/libft.h"
+# include "../lib/liblst/liblst.h"
 
 t_list	*create_stack(char *str);
 void	put_sorted_index(t_list *stack);
@@ -37,7 +37,9 @@ int     ft_str_is_numeric(char *str);
 int     ft_is_int(char *str);
 int     ft_str_norepeat_in_mat(char **ptr);
 
-t_list *push_swap(t_list **stack_a);
+void    push_swap(t_list **stack_a);
+void    fill_stackb(t_list **stk_a, t_list **stk_b);
+void    sort_3stack(t_list **stk_a);
 
 void	ft_free_mat(char **mat);
 void	ft_free_array(int **array);
@@ -54,8 +56,8 @@ void	ft_swap_nbr(int *a, int *b);
 void    swap(t_list **stack, char id);
 void    rotate(t_list *stack, char id);
 void    rev_rotate(t_list *stack, char id);
-void    push_b(t_list *stack_a, t_list *stack_b);
-void    push_a(t_list *stack_b, t_list *stack_a);
+void    push_b(t_list **stack_a, t_list **stack_b);
+void    push_a(t_list **stack_a, t_list **stack_b);
 
 
 

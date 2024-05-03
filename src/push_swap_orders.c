@@ -1,19 +1,23 @@
+
+
 #include "push_swap.h"
 
-void swap(t_list **stack, char id)
+void swap(t_list **stk, char id)
 {
-    t_list *tmp;
-    t_list *node;
+    t_list  *tmp1;
+    t_list  *tmp2;
 
-    node = *stack;
-    tmp = node->next->next;
-    node->next->next = *stack;
-    *stack = node->next;
-    (*stack)->next = tmp;
+    if (ftps_lstsize(*stk) == 1)
+        return ;
+    tmp1 = (*stk)->next;
+    tmp2 = (*stk)->next->next;
+    (*stk)->next->next = (*stk);
+    (*stk)->next = tmp2;
+    *stk = tmp1;
     if (id == 'a')
-        ft_putstr_fd("sa\n", 1);
+        ft_putstr_fd("sa\n", STDOUT);
     else if (id == 'b')
-        ft_putstr_fd("sb\n", 1);
+        ft_putstr_fd("sb\n", STDOUT);
     return ;
 }
 
@@ -56,26 +60,35 @@ void rev_rotate(t_list *stack, char id)
     return ;
 }
 
-void    push_b(t_list *stack_a, t_list *stack_b)
+void    push_a(t_list **stk_a, t_list **stk_b)
 {
     t_list *tmp;
-
-    tmp = stack_b -> next;
-    stack_b -> next = stack_a;
-    stack_a = stack_b;
-    stack_b = tmp;
-    ft_putstr_fd("pb\n", STDOUT);
+    
+    tmp = (*stk_b)->next;
+    (*stk_b)->next = *stk_a;
+    *stk_a = *stk_b;
+    *stk_b = tmp;
+    ft_putstr_fd("pa\n", STDOUT);
     return ;
 }
 
-void    push_a(t_list *stack_b, t_list *stack_a)
+void    push_b(t_list **stk_a, t_list **stk_b)
 {
     t_list *tmp;
-
-    tmp = stack_a -> next;
-    stack_a -> next = stack_b;
-    stack_b = stack_a;
-    stack_a = tmp;
-    ft_putstr_fd("pa\n", STDOUT);
+    
+    if (*stk_b == NULL)
+    {
+        *stk_b = *stk_a;
+        *stk_a = (*stk_a)->next;
+        (*stk_b)->next = NULL;
+    }
+    else
+    {
+        tmp = (*stk_a) -> next;
+        (*stk_a) -> next = *stk_b;
+        *stk_b = *stk_a;
+        *stk_a = tmp;
+    }
+    ft_putstr_fd("pb\n", STDOUT);
     return ;
 }

@@ -3,30 +3,31 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/17 15:08:51 by aolabarr          #+#    #+#              #
-#    Updated: 2024/05/01 20:52:20 by marvin           ###   ########.fr        #
+#    Updated: 2024/05/03 10:31:46 by aolabarr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 
 CC = cc
-OBJ_CREATE = -c
+NO_LINK = -c
 CFLAGS = -Wall -Wextra -Werror
 
+SRC_DIR = ./src
 INC_DIR = ./lib
 LIBFT_DIR = ./lib/libft
 LIBLST_DIR = ./lib/liblst
 
-SRC =	push_swap_main.c \
-		push_swap_errors.c\
-		push_swap_arrays.c\
-		push_swap_lists.c\
-		push_swap_orders.c\
-		push_swap_free.c\
-		push_swap_utils.c\
+SRC =	$(SRC_DIR)/push_swap_main.c \
+		$(SRC_DIR)/push_swap_errors.c\
+		$(SRC_DIR)/push_swap_arrays.c\
+		$(SRC_DIR)/push_swap_lists.c\
+		$(SRC_DIR)/push_swap_orders.c\
+		$(SRC_DIR)/push_swap_free.c\
+		$(SRC_DIR)/push_swap_utils.c\
 
 OBJS = $(SRC:.c=.o)
 
@@ -34,10 +35,9 @@ all: lib $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -L$(LIBLST_DIR) -lft -llst -o $(NAME)
-#$(CC) $(CFLAGS) libft.a $(OBJS) -o $(NAME)
 
 %.o: %.c
-	$(CC) $(OBJ_CREATE) $(CFLAGS) -I$(INC_DIR) $< -o $@
+	$(CC) $(NO_LINK) $(CFLAGS) -I$(INC_DIR) $< -o $@
 
 lib:
 	make -C $(LIBFT_DIR)
@@ -49,7 +49,7 @@ fclean: clean
 	make fclean -C $(LIBLST_DIR)
 
 clean:
-	rm -f *.o
+	rm -f $(SRC_DIR)/*.o
 	make clean -C $(LIBFT_DIR)
 	make clean -C $(LIBLST_DIR)
 

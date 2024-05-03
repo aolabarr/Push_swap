@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_main.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 19:23:20 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/05/01 21:11:02 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/03 15:34:53 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int ac, char **av)
 {
 	t_list	*stack;
-	t_list	*head;
+	t_list	*node;
 	//t_list	*orders;
 
 	if (ac != 2)
@@ -25,24 +25,18 @@ int	main(int ac, char **av)
 	stack = create_stack(av[1]);
 	if (stack == NULL)
 		return (ft_putstr_fd(ERROR_MESSAGE, STDERR), 0);
-	//orders = push_swap(&stack);
+	push_swap(&stack);
 	//ftps_lstsize(orders);
-	head = stack;
-	
-	
-	// ESCRIBIR STACK
-	printf("origin stack\n");
-	while (stack -> next != NULL)
-	{
-		ft_putnbr_fd(stack -> content, STDOUT);
-		ft_putchar_fd('\n', STDOUT);
-		stack = stack -> next;
-	}
-	ft_putnbr_fd(stack -> content, STDOUT);
-	ft_putchar_fd('\n', STDOUT);
-	stack = head;
-	//
 
+	// PRINT NODES & IDX
+	printf("MAIN\nNode\tidx\n");
+	node = stack;
+	while (node != NULL)
+	{
+		printf("%d\t%d\n", node->content, node->idx);
+		node = node -> next;
+	}
+	//
 	return (0);
 }
 
@@ -67,7 +61,8 @@ t_list	*create_stack(char *str)
 			return (ft_free_mat(ptr), ftps_lstclear(&lst, &free), NULL);
 		ftps_lstadd_back(&lst, node);
 	}
-	put_sorted_index(lst);
+	if (ptr[0] != NULL)
+		put_sorted_index(lst);
 	return (lst);
 }
 
@@ -91,16 +86,5 @@ void	put_sorted_index(t_list *stack)
 		i++;
 	}
 	ft_free_array(&array);
-	
-	// PRINT NODES & IDX
-	printf("Node\tidx\n");
-	node = stack;
-	while (node != NULL)
-	{
-		printf("%d\t%d\n", node->content, node->idx);
-		node = node -> next;
-	}
-	//
-	
 	return ;
 }
