@@ -21,14 +21,15 @@ void swap(t_list **stk, char id)
     return ;
 }
 
-void rotate(t_list *stack, char id)
+void rotate(t_list **stk, char id)
 {
+    // ESA FUNCION ESTA MAL
     t_list *tmp;
 
-    tmp = stack->next;
-    (ftps_lstlast(stack))->next = stack;
-    stack -> next = NULL;
-    stack = tmp;
+    tmp = (*stk)->next;
+    (ftps_lstlast(*stk))->next = *stk;
+    (*stk)->next = NULL;
+    *stk = tmp;
     if (id == 'a')
         ft_putstr_fd("ra\n", STDOUT);
     else if (id == 'b')
