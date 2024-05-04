@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 13:39:09 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/05/04 17:52:52 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/04 20:34:16 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,10 +31,13 @@
 # include "../lib/libft/libft.h"
 # include "../lib/liblst/liblst.h"
 
-t_list	*create_stack(char *str);
+t_list	*manage_input_data(int ac, char **av);
+t_list	*create_stack_av(int ac, char **ptr);
+t_list	*create_stack_str(char *str);
 void	put_sorted_index(t_list *stack);
 
-void    check_errors(char *str);
+void    check_errors_str(char *str);
+void    check_errors_av(int ac, char **ptr);
 int     ft_str_is_numeric(char *str);
 int     ft_is_int(char *str);
 int     ft_str_norepeat_in_mat(char **ptr);

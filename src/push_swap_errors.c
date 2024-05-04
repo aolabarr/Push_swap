@@ -6,19 +6,19 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 20:46:56 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/05/04 17:54:33 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/04 20:05:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	check_errors(char *str)
+void	check_errors_str(char *str)
 {
 	size_t	i;
 	char	**ptr;
 
 	if (!str || *str == '\0')
-		exit (ft_putstr_fd(ERROR_MESSAGE, STDERR));
+		exit (0);
 	ptr = ft_split(str, ' ');
 	i = 0;
 	while (ptr[i] != NULL)
@@ -28,6 +28,24 @@ void	check_errors(char *str)
 		exit (ft_putstr_fd(ERROR_MESSAGE, STDERR));
 	return ;
 }
+
+void	check_errors_av(int ac, char **ptr)
+{
+	int	i;
+
+	if (!ptr)
+		exit (0);
+	i = 1;
+	while (i < ac)
+		if (!ft_str_is_numeric(ptr[i]) || !ft_is_int(ptr[i++]))
+			exit (ft_putstr_fd("Error 1", STDERR));
+			
+	if (!ft_str_norepeat_in_mat(ptr))
+		exit (ft_putstr_fd("Error 2", STDERR));
+		
+	return ;
+}
+
 
 int	ft_str_is_numeric(char *str)
 {

@@ -6,7 +6,7 @@
 /*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 19:23:20 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/05/04 18:35:43 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/04 20:08:15 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,12 +18,12 @@ int	main(int ac, char **av)
 	t_list	*node;
 	//t_list	*orders;
 
-	if  (ac != 2)
-		return (ft_putstr_fd(ERROR_MESSAGE, STDERR));
-	check_errors(av[1]);
-	stack = create_stack(av[1]);
-	if (stack == NULL)
-		return (ft_putstr_fd(ERROR_MESSAGE, STDERR));
+	
+	stack = manage_input_data(ac, av);
+	//check_errors(av[1]);
+	//stack = create_stack(av[1]);
+	//if (stack == NULL)
+	//	return (ft_putstr_fd(ERROR_MESSAGE, STDERR));
 	
 	// Stack incial
     printf("Stack_inicial\n");
@@ -45,7 +45,50 @@ int	main(int ac, char **av)
 	return (0);
 }
 
-t_list	*create_stack(char *str)
+t_list	*manage_input_data(int ac, char **av)
+{
+	t_list *stack;
+	if  (ac < 2)
+		exit (0);
+	else if (ac == 2)
+	{
+		check_errors_str(av[1]);
+		stack = create_stack_str(av[1]);
+	}	
+	else if (ac > 2)
+	{
+		check_errors_av(ac, av);
+		stack = create_stack_av(ac, av);
+	}
+		
+	return (stack);
+}
+
+t_list	*create_stack_av(int ac, char **ptr)
+{
+	t_list	*lst;
+	t_list	*node;
+	int		i;
+
+	if (!ptr)
+		exit (EXITCODE);
+	i = 1;
+	lst = ftps_lstnew(ft_atoi(ptr[i++]));
+	if (!lst)
+		exit(EXITCODE);
+	while (i < ac)
+	{
+		node = ftps_lstnew(ft_atoi(ptr[i++]));
+		if (!node)
+			exit(EXITCODE);
+		ftps_lstadd_back(&lst, node);
+	}
+	if (ptr[0] != NULL)
+		put_sorted_index(lst);
+	return (lst);
+}
+
+t_list	*create_stack_str(char *str)
 {
 	t_list	*lst;
 	t_list	*node;
@@ -54,16 +97,16 @@ t_list	*create_stack(char *str)
 
 	ptr = ft_split(str, ' ');
 	if (!ptr)
-		return (NULL);
+		exit (EXITCODE);
 	i = 0;
 	lst = ftps_lstnew(ft_atoi(ptr[i++]));
 	if (!lst)
-		return (ft_free_mat(ptr), NULL);
+		exit(EXITCODE);
 	while (i < ft_matsize(ptr))
 	{
 		node = ftps_lstnew(ft_atoi(ptr[i++]));
 		if (!node)
-			return (ft_free_mat(ptr), ftps_lstclear(&lst, &free), NULL);
+			exit(EXITCODE);
 		ftps_lstadd_back(&lst, node);
 	}
 	if (ptr[0] != NULL)

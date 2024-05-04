@@ -57,6 +57,7 @@ void    push_swap(t_list **stack_a)
 		node_b = node_b -> next;
 	}
     sort_3stack(stack_a);
+    //empty_stackb(stack_a, stack_b);
     /*
     while(!ftps_lstsize(*stack_b))
         move_one(stack_a, stack_b);
@@ -122,6 +123,5 @@ void    sort_3stack(t_list **stk)
     }
     else if (a < b && b > c && a > c)
         rev_rotate(stk, 'a');
-
     return ;
 }
