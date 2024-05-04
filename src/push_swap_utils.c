@@ -12,6 +12,22 @@
 
 #include "push_swap.h"
 
+void    manage_push_swap(t_list **stack)
+{
+    int size;
+    //t_list *orders;
+
+    if (ft_lst_is_sorted(*stack) || ftps_lstsize(*stack) == 1)
+        exit(0);
+    size = ftps_lstsize(*stack);
+    if (size == 2)
+        sort_2stack(stack);
+    else if (size == 3)
+        sort_3stack(stack);
+    else
+        push_swap(stack);
+}
+
 void    push_swap(t_list **stack_a)
 {
     t_list  **stack_b;
@@ -19,16 +35,14 @@ void    push_swap(t_list **stack_a)
     t_list  *node_a;
     t_list  *node_b;
     
-    printf("Stack_inicial\n");
-    ft_lst_putnbr_fd(*stack_a, STDOUT);
     stack_b = malloc(sizeof(t_list *));
+    if (!stack_b)
+        exit(1);
     *stack_b = NULL;
-    //printf("stk_b dir: %p\n", stack_b);
     fill_stackb(stack_a, stack_b);
     
     // PRINT NODES & IDX
-    //ft_lst_putnbr_fd(*stack_a, STDOUT);
-    printf("Stk_A\tidx\n");
+    printf("\nStk_A\tidx\n");
     node_a = *stack_a;
 	while (node_a != NULL)
 	{
@@ -57,32 +71,57 @@ void    fill_stackb(t_list **stk_a, t_list **stk_b)
     int  i;
     int  j;
 
-    
     size = ftps_lstsize(*stk_a);
     mc = size / PARTS;
     i = 0;
     j = 0;
-    //printf("P: 0000\n");
-    while (j < size - 2)
+    while (j < size - 3)
     {
         if ((*stk_a)->idx <= size / PARTS * (i + 1))
         {
             push_b(stk_a, stk_b);
             j++;
         }
-        //else
-            //rotate(stk_a, 'a');
-        if (j > mc * (i + 1))
-        {
-            printf("P: 5000\n");
+        else
+            rotate(stk_a, 'a');
+        if (j >= mc * (i + 1))
             i++;
-        }
     }
 }
 
-void    sort_3stack(t_list **stk_a)
+void    sort_2stack(t_list **stk_a)
 {
-    if (!ft_lst_is_sorted(*stk_a))
-        swap(stk_a, 'a');
-    return;
+    //t_list *orders;
+
+    swap(stk_a, 'a');
+    return ;
+}
+
+void    sort_3stack(t_list **stk)
+{
+    int a;
+    int b;
+    int c;
+
+    a = (*stk)->content;
+    b = (*stk)->next->content;
+    c = (*stk)->next->next->content;
+    if (a > b && b < c && a < c)
+        swap(stk, 'a');
+    else if (a > b && b > c)
+    {
+        swap(stk, 'a');
+        rev_rotate(stk, 'a');
+    }
+    else if (a > b && b < c && a > c)
+        rotate(stk, 'a');
+    else if (a < b && b > c && a < c)
+    {
+        swap(stk, 'a');
+        rotate(stk, 'a');
+    }
+    else if (a < b && b > c && a > c)
+        rev_rotate(stk, 'a');
+
+    return ;
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_main.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 19:23:20 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/05/03 15:34:53 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/05/04 18:35:43 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,23 @@ int	main(int ac, char **av)
 	t_list	*node;
 	//t_list	*orders;
 
-	if (ac != 2)
-		return (0);
-	else if  (ac > 2 || check_errors(av[1]) == -1)
-		return (ft_putstr_fd(ERROR_MESSAGE, STDERR), 0);
+	if  (ac != 2)
+		return (ft_putstr_fd(ERROR_MESSAGE, STDERR));
+	check_errors(av[1]);
 	stack = create_stack(av[1]);
 	if (stack == NULL)
-		return (ft_putstr_fd(ERROR_MESSAGE, STDERR), 0);
-	push_swap(&stack);
+		return (ft_putstr_fd(ERROR_MESSAGE, STDERR));
+	
+	// Stack incial
+    printf("Stack_inicial\n");
+    ft_lst_putnbr_fd(stack, STDOUT);
+	printf("\nORDERS\n");
+	
+	manage_push_swap(&stack);
 	//ftps_lstsize(orders);
 
 	// PRINT NODES & IDX
-	printf("MAIN\nNode\tidx\n");
+	printf("\nMAIN\nNode\tidx\n");
 	node = stack;
 	while (node != NULL)
 	{

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 13:39:09 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/05/03 19:13:30 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/05/04 17:52:52 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,10 @@
 # define MININT_STR "-2147483648"
 # define STDOUT 1
 # define STDERR 2
+# define EXITCODE 1
 # define ERROR_MESSAGE "Error\n"
-# define PARTS 1
+# define PARTS 4
+
 
 # include <stdio.h>
 # include <unistd.h>
@@ -32,13 +34,15 @@
 t_list	*create_stack(char *str);
 void	put_sorted_index(t_list *stack);
 
-int     check_errors(char *str);
+void    check_errors(char *str);
 int     ft_str_is_numeric(char *str);
 int     ft_is_int(char *str);
 int     ft_str_norepeat_in_mat(char **ptr);
 
+void    manage_push_swap(t_list **stack);
 void    push_swap(t_list **stack_a);
 void    fill_stackb(t_list **stk_a, t_list **stk_b);
+void    sort_2stack(t_list **stk_a);
 void    sort_3stack(t_list **stk_a);
 
 void	ft_free_mat(char **mat);
@@ -54,12 +58,9 @@ int     ft_array_is_sorted(int *array, int size);
 void	ft_swap_nbr(int *a, int *b);
 
 void    swap(t_list **stack, char id);
-void    rotate(t_list *stack, char id);
-void    rev_rotate(t_list *stack, char id);
+void    rotate(t_list **stk, char id);
+void    rev_rotate(t_list **stack, char id);
 void    push_b(t_list **stack_a, t_list **stack_b);
 void    push_a(t_list **stack_a, t_list **stack_b);
-
-
-
 
 #endif

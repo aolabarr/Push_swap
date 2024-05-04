@@ -23,11 +23,12 @@ void swap(t_list **stk, char id)
 
 void rotate(t_list **stk, char id)
 {
-    // ESA FUNCION ESTA MAL
     t_list *tmp;
+    t_list  *last;
 
     tmp = (*stk)->next;
-    (ftps_lstlast(*stk))->next = *stk;
+    last = ftps_lstlast(*stk);
+    last->next = *stk;
     (*stk)->next = NULL;
     *stk = tmp;
     if (id == 'a')
@@ -37,23 +38,25 @@ void rotate(t_list **stk, char id)
     return ;
 }
 
-void rev_rotate(t_list *stack, char id)
+void rev_rotate(t_list **stk, char id)
 {
     t_list *tmp;
-    t_list *node;
+    t_list *slast;
+    t_list *last;
     int i;
     
-    node = stack;
-    i = 1;
-    while (i < ftps_lstsize(stack) - 1)
+    last = ftps_lstlast(*stk);
+    slast = *stk;
+    i = 0;
+    while (i < ftps_lstsize(*stk) - 2)
     {
-        node = node -> next;
+        slast = slast -> next;
         i++;
     }
-    tmp = stack;
-    stack = ftps_lstlast(stack);
-    ftps_lstlast(stack) -> next = tmp;
-    node -> next = NULL;
+    tmp = slast->next;
+    last -> next = *stk;
+    slast -> next = NULL;
+    *stk = tmp;
     if (id == 'a')
         ft_putstr_fd("rra\n", STDOUT);
     else if (id == 'b')
