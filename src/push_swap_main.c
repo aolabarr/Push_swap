@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_main.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 19:23:20 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/05/04 20:08:15 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/05 18:47:25 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 int	main(int ac, char **av)
 {
 	t_list	*stack;
-	t_list	*node;
+	//t_list	*node;
 	//t_list	*orders;
 
 	
@@ -26,14 +26,14 @@ int	main(int ac, char **av)
 	//	return (ft_putstr_fd(ERROR_MESSAGE, STDERR));
 	
 	// Stack incial
-    printf("Stack_inicial\n");
-    ft_lst_putnbr_fd(stack, STDOUT);
-	printf("\nORDERS\n");
+    //printf("Stack_inicial\n");
+    //ft_lst_putnbr_fd(stack, STDOUT);
+	//printf("\nORDERS\n");
 	
 	manage_push_swap(&stack);
 	//ftps_lstsize(orders);
 
-	// PRINT NODES & IDX
+	/* PRINT NODES & IDX
 	printf("\nMAIN\nNode\tidx\n");
 	node = stack;
 	while (node != NULL)
@@ -41,13 +41,15 @@ int	main(int ac, char **av)
 		printf("%d\t%d\n", node->content, node->idx);
 		node = node -> next;
 	}
-	//
+	*/
 	return (0);
 }
 
 t_list	*manage_input_data(int ac, char **av)
 {
 	t_list *stack;
+	
+	stack = NULL;
 	if  (ac < 2)
 		exit (0);
 	else if (ac == 2)

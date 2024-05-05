@@ -67,11 +67,19 @@ void rev_rotate(t_list **stk, char id)
 void    push_a(t_list **stk_a, t_list **stk_b)
 {
     t_list *tmp;
-    
-    tmp = (*stk_b)->next;
-    (*stk_b)->next = *stk_a;
-    *stk_a = *stk_b;
-    *stk_b = tmp;
+    if (ftps_lstsize(*stk_b) != 1)
+    {
+        tmp = (*stk_b)->next;
+        (*stk_b)->next = *stk_a;
+        *stk_a = *stk_b;
+        *stk_b = tmp;
+    }
+    else
+    {
+        (*stk_b)->next = *stk_a;
+        *stk_a = *stk_b;
+        *stk_b = NULL;
+    }
     ft_putstr_fd("pa\n", STDOUT);
     return ;
 }

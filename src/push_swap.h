@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 13:39:09 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/05/04 20:34:16 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/05 18:52:29 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@
 # define STDERR 2
 # define EXITCODE 1
 # define ERROR_MESSAGE "Error\n"
-# define PARTS 4
+# define PARTS 1
 
 
 # include <stdio.h>
@@ -47,6 +47,13 @@ void    push_swap(t_list **stack_a);
 void    fill_stackb(t_list **stk_a, t_list **stk_b);
 void    sort_2stack(t_list **stk_a);
 void    sort_3stack(t_list **stk_a);
+void    final_sort(t_list **stk);
+
+void	empty_stackb(t_list **stk_a, t_list **stk_b);
+void	set_cost(t_list *stk_a, t_list *stk_b);
+t_cost	min_cost(t_list *stk);
+void	set_cost_zero(t_list *stk);
+int     max_idx(t_list *stk);
 
 void	ft_free_mat(char **mat);
 void	ft_free_array(int **array);

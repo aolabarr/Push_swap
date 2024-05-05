@@ -32,8 +32,8 @@ void    push_swap(t_list **stack_a)
 {
     t_list  **stack_b;
     //t_list  *orders;
-    t_list  *node_a;
-    t_list  *node_b;
+    //t_list  *node_a;
+    //t_list  *node_b;
     
     stack_b = malloc(sizeof(t_list *));
     if (!stack_b)
@@ -41,7 +41,7 @@ void    push_swap(t_list **stack_a)
     *stack_b = NULL;
     fill_stackb(stack_a, stack_b);
     
-    // PRINT NODES & IDX
+    /* PRINT NODES & IDX
     printf("\nStk_A\tidx\n");
     node_a = *stack_a;
 	while (node_a != NULL)
@@ -56,8 +56,10 @@ void    push_swap(t_list **stack_a)
 		printf("%d\t%d\n", node_b->content, node_b->idx);
 		node_b = node_b -> next;
 	}
+    */
     sort_3stack(stack_a);
-    //empty_stackb(stack_a, stack_b);
+    empty_stackb(stack_a, stack_b);
+    final_sort(stack_a);
     /*
     while(!ftps_lstsize(*stack_b))
         move_one(stack_a, stack_b);
@@ -123,5 +125,30 @@ void    sort_3stack(t_list **stk)
     }
     else if (a < b && b > c && a > c)
         rev_rotate(stk, 'a');
+    return ;
+}
+
+void    final_sort(t_list **stk)
+{
+    int i;
+    t_list   *node;
+    
+    node = *stk;
+    i = 0;
+    while (node->idx != 1)
+    {
+        i++;
+        node = node -> next;
+    }
+    if (i <= ftps_lstsize(*stk) / 2)
+    {
+        while ((*stk)->idx != 1)
+            rev_rotate(stk, 'a');
+    }
+    else
+    {
+        while ((*stk)->idx != 1)
+            rotate(stk, 'a');
+    }
     return ;
 }

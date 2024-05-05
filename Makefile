@@ -6,7 +6,7 @@
 #    By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/17 15:08:51 by aolabarr          #+#    #+#              #
-#    Updated: 2024/05/03 10:31:46 by aolabarr         ###   ########.fr        #
+#    Updated: 2024/05/05 19:25:24 by aolabarr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,27 +16,29 @@ CC = cc
 NO_LINK = -c
 CFLAGS = -Wall -Wextra -Werror
 
+OBJ_DIR = ./obj
 SRC_DIR = ./src
 INC_DIR = ./lib
 LIBFT_DIR = ./lib/libft
 LIBLST_DIR = ./lib/liblst
 
-SRC =	$(SRC_DIR)/push_swap_main.c \
-		$(SRC_DIR)/push_swap_errors.c\
-		$(SRC_DIR)/push_swap_arrays.c\
-		$(SRC_DIR)/push_swap_lists.c\
-		$(SRC_DIR)/push_swap_orders.c\
-		$(SRC_DIR)/push_swap_free.c\
-		$(SRC_DIR)/push_swap_utils.c\
+SRC =	push_swap_main.c \
+		push_swap_errors.c\
+		push_swap_arrays.c\
+		push_swap_lists.c\
+		push_swap_orders.c\
+		push_swap_free.c\
+		push_swap_utils.c\
+		push_swap_utils_2.c\
 
-OBJS = $(SRC:.c=.o)
+OBJS = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
 all: lib $(NAME)
 
 $(NAME): $(OBJS)
 	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -L$(LIBLST_DIR) -lft -llst -o $(NAME)
 
-%.o: %.c
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(NO_LINK) $(CFLAGS) -I$(INC_DIR) $< -o $@
 
 lib:
@@ -49,7 +51,7 @@ fclean: clean
 	make fclean -C $(LIBLST_DIR)
 
 clean:
-	rm -f $(SRC_DIR)/*.o
+	rm -f $(OBJ_DIR)/*.o
 	make clean -C $(LIBFT_DIR)
 	make clean -C $(LIBLST_DIR)
 

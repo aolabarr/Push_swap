@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/12 19:48:21 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/04/27 13:32:28 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/05/05 17:59:45 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,11 +21,10 @@ int	ftps_lstsize(t_list *lst)
 	node = lst;
 	if (lst == NULL)
 		return (count);
-	while ((node -> next) != NULL)
+	while (node != NULL)
 	{
 		count++;
 		node = node -> next;
 	}
-	count++;
 	return (count);
 }
