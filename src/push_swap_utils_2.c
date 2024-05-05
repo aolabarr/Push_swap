@@ -5,9 +5,7 @@ void	empty_stackb(t_list **stk_a, t_list **stk_b)
 {
 	t_cost	cur_cost;
 	int		i;
-	//t_list	*node_a;
-	//t_list	*node_b;
-
+	
 	while (*stk_b != NULL)
 	{
 		set_cost(*stk_a, *stk_b);
@@ -28,8 +26,11 @@ void	empty_stackb(t_list **stk_a, t_list **stk_b)
 			while(i++ < cur_cost.rrb)
 				rev_rotate(stk_b, 'b');
 		push_a(stk_a, stk_b);
+		
 		/*
-		// PRINT NODES & IDX
+		//PRINT NODES & IDX
+		t_list	*node_a;
+		t_list	*node_b;
     	printf("\nStk_A\tidx\n");
     	node_a = *stk_a;
 		while (node_a != NULL)
@@ -38,7 +39,7 @@ void	empty_stackb(t_list **stk_a, t_list **stk_b)
 			node_a = node_a -> next;
 		}
     	node_b = *stk_b;
-    	printf("Stk_B\tidx\n");
+    	//printf("Stk_B\tidx\n");
     	while (node_b != NULL)
 		{
 			printf("%d\t%d\n", node_b->content, node_b->idx);
@@ -72,8 +73,17 @@ void	set_cost(t_list *stk_a, t_list *stk_b)
 		target = (node_b->idx);
 		node_a = stk_a;
 		j = 0;
-		if (max_idx(node_a) < target)
-			j = size[0];
+		//printf("P 000\n");
+		if (max_idx(stk_a) < target)
+		{
+			//printf("P 110\n");
+			while(node_a->idx != min_idx(stk_a))
+			{
+				//printf("P 120: idx: %d\tmin: %d\n", node_a -> idx, min_idx(stk_a));
+				j++;
+				node_a = node_a->next;
+			}
+		}
 		else if (node_a->idx < target)
 		{
 			while(node_a->idx < target)
@@ -136,4 +146,18 @@ int	max_idx(t_list *stk)
 		stk = stk->next;
 	}
 	return(max);
+}
+
+int	min_idx(t_list *stk)
+{
+	int	min;
+
+	min = max_idx(stk);
+	while (stk != NULL)
+	{
+		if (stk->idx < min)
+			min = stk->idx;
+		stk = stk->next;
+	}
+	return (min);
 }

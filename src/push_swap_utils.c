@@ -32,16 +32,18 @@ void    push_swap(t_list **stack_a)
 {
     t_list  **stack_b;
     //t_list  *orders;
-    //t_list  *node_a;
-    //t_list  *node_b;
+    
     
     stack_b = malloc(sizeof(t_list *));
     if (!stack_b)
         exit(1);
     *stack_b = NULL;
     fill_stackb(stack_a, stack_b);
-    
-    /* PRINT NODES & IDX
+    sort_3stack(stack_a);
+    /*
+    //PRINT NODES & IDX
+    t_list  *node_a;
+    t_list  *node_b;
     printf("\nStk_A\tidx\n");
     node_a = *stack_a;
 	while (node_a != NULL)
@@ -57,30 +59,28 @@ void    push_swap(t_list **stack_a)
 		node_b = node_b -> next;
 	}
     */
-    sort_3stack(stack_a);
+    
     empty_stackb(stack_a, stack_b);
     final_sort(stack_a);
-    /*
-    while(!ftps_lstsize(*stack_b))
-        move_one(stack_a, stack_b);
-    return (orders);
-    */
 }
 
 void    fill_stackb(t_list **stk_a, t_list **stk_b)
 {
-    int  size;
-    int  mc;
-    int  i;
-    int  j;
+    int	mc;
+	int size;
+    int i;
+    int	j;
 
-    size = ftps_lstsize(*stk_a);
-    mc = size / PARTS;
+	size = ftps_lstsize(*stk_a);
+	if (size / PARTS > 0)
+		mc = size / PARTS;
+	else
+		mc = size;
     i = 0;
     j = 0;
     while (j < size - 3)
     {
-        if ((*stk_a)->idx <= size / PARTS * (i + 1))
+        if ((*stk_a)->idx <= mc * (i + 1))
         {
             push_b(stk_a, stk_b);
             j++;

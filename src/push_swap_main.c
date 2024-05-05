@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_main.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
+/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 19:23:20 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/05/05 18:47:25 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/05/05 23:33:30 by marvin           ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,25 +15,14 @@
 int	main(int ac, char **av)
 {
 	t_list	*stack;
-	//t_list	*node;
+	
 	//t_list	*orders;
 
-	
-	stack = manage_input_data(ac, av);
-	//check_errors(av[1]);
-	//stack = create_stack(av[1]);
-	//if (stack == NULL)
-	//	return (ft_putstr_fd(ERROR_MESSAGE, STDERR));
-	
-	// Stack incial
-    //printf("Stack_inicial\n");
-    //ft_lst_putnbr_fd(stack, STDOUT);
-	//printf("\nORDERS\n");
-	
+	stack = manage_input_data(ac, av);	
 	manage_push_swap(&stack);
-	//ftps_lstsize(orders);
-
-	/* PRINT NODES & IDX
+	/*
+	// PRINT NODES & IDX
+	t_list	*node;
 	printf("\nMAIN\nNode\tidx\n");
 	node = stack;
 	while (node != NULL)
@@ -61,8 +50,7 @@ t_list	*manage_input_data(int ac, char **av)
 	{
 		check_errors_av(ac, av);
 		stack = create_stack_av(ac, av);
-	}
-		
+	}	
 	return (stack);
 }
 
