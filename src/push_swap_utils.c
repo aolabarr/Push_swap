@@ -31,8 +31,6 @@ void    manage_push_swap(t_list **stack)
 void    push_swap(t_list **stack_a)
 {
     t_list  **stack_b;
-    //t_list  *orders;
-    
     
     stack_b = malloc(sizeof(t_list *));
     if (!stack_b)
@@ -59,7 +57,6 @@ void    push_swap(t_list **stack_a)
 		node_b = node_b -> next;
 	}
     */
-    
     empty_stackb(stack_a, stack_b);
     final_sort(stack_a);
 }
@@ -94,8 +91,6 @@ void    fill_stackb(t_list **stk_a, t_list **stk_b)
 
 void    sort_2stack(t_list **stk_a)
 {
-    //t_list *orders;
-
     swap(stk_a, 'a');
     return ;
 }

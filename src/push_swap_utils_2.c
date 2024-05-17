@@ -10,7 +10,6 @@ void	empty_stackb(t_list **stk_a, t_list **stk_b)
 	{
 		set_cost(*stk_a, *stk_b);
 		cur_cost = min_cost(*stk_b);
-		//printf("P 400: min ra=%d,rra=%d,rb=%d,rrb=%d\n", cur_cost.ra, cur_cost.rra, cur_cost.rb, cur_cost.rrb);
 		i = 0;
 		if (cur_cost.ra)
 			while(i++ < cur_cost.ra)
@@ -73,13 +72,10 @@ void	set_cost(t_list *stk_a, t_list *stk_b)
 		target = (node_b->idx);
 		node_a = stk_a;
 		j = 0;
-		//printf("P 000\n");
 		if (max_idx(stk_a) < target)
 		{
-			//printf("P 110\n");
 			while(node_a->idx != min_idx(stk_a))
 			{
-				//printf("P 120: idx: %d\tmin: %d\n", node_a -> idx, min_idx(stk_a));
 				j++;
 				node_a = node_a->next;
 			}

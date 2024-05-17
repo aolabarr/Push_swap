@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 13:39:09 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/05/05 23:42:20 by marvin           ###   ########.fr       */
+/*   Updated: 2024/05/17 14:13:58 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@
 # define EXITCODE 1
 # define ERROR_MESSAGE "Error\n"
 # define PARTS 1
+# define NO_WRITE 0
 
 
 # include <stdio.h>
@@ -80,5 +81,8 @@ void	rotate(t_list **stk, char id);
 void	rev_rotate(t_list **stack, char id);
 void	push_b(t_list **stack_a, t_list **stack_b);
 void	push_a(t_list **stack_a, t_list **stack_b);
+
+void	rotate_double(t_list **stk_a, t_list **stk_b, int id);
+void	rev_rotate_double(t_list **stk_a, t_list **stk_b, int id);
 
 #endif
