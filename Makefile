@@ -6,7 +6,7 @@
 #    By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/17 15:08:51 by aolabarr          #+#    #+#              #
-#    Updated: 2024/06/02 14:12:51 by aolabarr         ###   ########.fr        #
+#    Updated: 2024/06/02 15:52:09 by aolabarr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -50,12 +50,12 @@ lib:
 	make -C $(LIBLST_DIR)
 
 fclean: clean
-	rm -R $(OBJ_DIR)
 	rm -f $(NAME) *.out
 	make fclean -C $(LIBFT_DIR)
 	make fclean -C $(LIBLST_DIR)
 
 clean:
+	@if [ -d $(OBJ_DIR) ]; then rm -rf $(OBJ_DIR); fi
 	make clean -C $(LIBFT_DIR)
 	make clean -C $(LIBLST_DIR)
 

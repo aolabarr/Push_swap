@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 12:13:59 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/02 14:09:15 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/02 17:56:34 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ void	empty_stackb(t_list **stk_a, t_list **stk_b)
 {
 	t_cost	cur_cost;
 	int		i;
+
 	while (*stk_b != NULL)
 	{
 		set_cost(*stk_a, *stk_b);
@@ -58,19 +59,15 @@ void	empty_stackb(t_list **stk_a, t_list **stk_b)
 	return ;
 }
 
-void	set_cost(t_list *stk_a, t_list *stk_b)
+void	set_cost(t_list *stk_a, t_list *node_b)
 {
 	int		i;
 	int		j;
 	int		size[2];
-	t_list	*node_a;
-	t_list	*node_b;
-	int		target;
 	
-	set_cost_zero(stk_b);
+	set_cost_zero(node_b);
 	size[0] = ftps_lstsize(stk_a);
-	size[1] = ftps_lstsize(stk_b);
-	node_b = stk_b;
+	size[1] = ftps_lstsize(node_b);
 	i = 0;
 	while(node_b != NULL)
 	{
@@ -78,25 +75,7 @@ void	set_cost(t_list *stk_a, t_list *stk_b)
 			node_b->cost.rb = i;
 		else if (size[1] != 1)
 			node_b->cost.rrb = size[1] - i;
-		target = (node_b->idx);
-		node_a = stk_a;
-		j = 0;
-		if (max_idx(stk_a) < target)
-		{
-			while(node_a->idx != min_idx(stk_a))
-			{
-				j++;
-				node_a = node_a->next;
-			}
-		}
-		else if (node_a->idx < target)
-		{
-			while(node_a->idx < target)
-			{
-				j++;
-				node_a = node_a->next;
-			}
-		}
+		j = set_cost_stk_a(stk_a, node_b);
 		if (j <= size[0] / 2)
 			node_b->cost.ra = j;
 		else
@@ -124,7 +103,6 @@ t_cost	min_cost(t_list *stk)
 	while(node ->content != min)
 		node = node -> next;
 	return (node->cost);
-
 }
 
 void	set_cost_zero(t_list *stk)
@@ -137,5 +115,32 @@ void	set_cost_zero(t_list *stk)
 		stk->cost.rrb = 0;
 		stk = stk->next;
 	}
+}
+
+int	set_cost_stk_a(t_list *stk_a, t_list *node_b)
+{
+	int	j;
+	t_list *node_a;
+	
+	node_a = stk_a;
+	j = 0;
+	if (max_idx(stk_a) < node_b->idx || min_idx(stk_a) > node_b->idx)
+	{
+		while(node_a->idx != min_idx(stk_a))
+		{
+			j++;
+			node_a = node_a->next;
+		}
+	}
+	else
+	{
+		while(node_a->idx < node_b->idx && !(node_a->next->idx > node_b->idx))
+		{
+			j++;
+			node_a = node_a->next;
+		}
+		j++;
+	}
+	return (j);
 }
 

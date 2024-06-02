@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 13:39:09 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/02 13:36:37 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/02 16:35:02 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,8 @@ t_cost	min_cost(t_list *stk);
 void	set_cost_zero(t_list *stk);
 int		max_idx(t_list *stk);
 int		min_idx(t_list *stk);
+
+int     set_cost_stk_a(t_list *stk_a, t_list *node_b);
 
 void	ft_free_mat(char **mat);
 void	ft_free_array(int **array);
