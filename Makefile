@@ -6,7 +6,7 @@
 #    By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/17 15:08:51 by aolabarr          #+#    #+#              #
-#    Updated: 2024/06/02 15:52:09 by aolabarr         ###   ########.fr        #
+#    Updated: 2024/06/02 18:54:04 by aolabarr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -27,10 +27,12 @@ SRC =	push_swap_main.c \
 		push_swap_arrays.c\
 		push_swap_lists.c\
 		push_swap_orders.c\
+		push_swap_orders_2.c\
 		push_swap_free.c\
 		push_swap_utils.c\
 		push_swap_utils_2.c\
 		push_swap_utils_3.c\
+		push_swap_utils_4.c\
 
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 

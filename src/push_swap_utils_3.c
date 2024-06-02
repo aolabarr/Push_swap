@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 14:06:20 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/02 18:03:52 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/02 18:25:15 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -77,3 +77,9 @@ void	set_cost_zero(t_list *stk)
 	}
 }
 
+int	abs(int a)
+{
+	if (a < 0)
+		a = -a;
+	return (a);
+}

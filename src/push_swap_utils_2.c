@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 12:13:59 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/02 18:19:03 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/02 19:10:34 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -119,13 +119,44 @@ int	set_cost_stk_a(t_list *stk_a, t_list *node_b)
 void	exe_movements(t_list **stk_a, t_list **stk_b, t_cost cur_cost)
 {
 	int	i;
-
+	//int	rpt;
+/*
 	i = 0;
-
-	//if (cur_cost.ra && cur_cost.rb)
-	//	rotate_double(stk_a, stk_b, NO_WRITE);
-
-
+	if (cur_cost.ra && cur_cost.rb)
+	{
+		rpt = max(cur_cost.ra, cur_cost.rb) - abs(cur_cost.ra - cur_cost.rb);
+		while (i++ < rpt)
+			rotate_double(stk_a, stk_b, NO_WRITE);
+		if (cur_cost.ra > cur_cost.rb)
+		{
+			cur_cost.ra = cur_cost.ra - cur_cost.rb;
+			cur_cost.rb = 0;
+		}
+		else
+		{
+			cur_cost.rb = cur_cost.rb - cur_cost.ra;
+			cur_cost.ra = 0;
+		}
+	}
+	i = 0;
+	if (cur_cost.rra && cur_cost.rrb)
+	{
+		rpt = max(cur_cost.rra, cur_cost.rrb) - abs(cur_cost.rra - cur_cost.rrb);
+		while (i++ < rpt)
+			rev_rotate_double(stk_a, stk_b, NO_WRITE);
+		if (cur_cost.rra > cur_cost.rrb)
+		{
+			cur_cost.rra = cur_cost.rra - cur_cost.rrb;
+			cur_cost.rrb = 0;
+		}
+		else
+		{
+			cur_cost.rrb = cur_cost.rrb - cur_cost.rra;
+			cur_cost.rra = 0;
+		}
+	}
+	*/
+	i = 0;
 	if (cur_cost.ra)
 		while (i++ < cur_cost.ra)
 			rotate(stk_a, 'a');

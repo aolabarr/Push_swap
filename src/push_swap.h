@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 13:39:09 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/02 18:11:02 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/02 19:09:16 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define STDERR 2
 # define EXITCODE 1
 # define ERROR_MESSAGE "Error\n"
-# define PARTS 5
+# define PARTS 10
 # define NO_WRITE 0
 
 # include <stdio.h>
@@ -59,8 +59,10 @@ t_cost	min_cost(t_list *stk);
 void	set_cost_zero(t_list *stk);
 int		max_idx(t_list *stk);
 int		min_idx(t_list *stk);
+int		abs(int a);
+int		max(int a, int b);
 
-int     set_cost_stk_a(t_list *stk_a, t_list *node_b);
+int		set_cost_stk_a(t_list *stk_a, t_list *node_b);
 void	exe_movements(t_list **stk_a, t_list **stk_b, t_cost cur_cost);
 
 void	ft_free_mat(char **mat);
