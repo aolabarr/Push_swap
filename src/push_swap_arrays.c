@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_arrays.c                                 :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/02 12:12:44 by aolabarr          #+#    #+#             */
+/*   Updated: 2024/06/02 13:32:52 by aolabarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
-int *create_array(t_list *stack)
+int	*create_array(t_list *stack)
 {
 	int	*array;
 	int	i;
@@ -19,7 +30,7 @@ int *create_array(t_list *stack)
 	return (array);
 }
 
-void ft_bubble_sort(int *array, int size)
+void	ft_bubble_sort(int *array, int size)
 {
 	int	i;
 
@@ -44,7 +55,7 @@ int	ft_array_is_sorted(int *array, int size)
 	while (i < size - 1)
 	{
 		if (array[i] > array[i + 1])
-			return(0);
+			return (0);
 		i++;
 	}
 	return (1);
@@ -52,11 +63,10 @@ int	ft_array_is_sorted(int *array, int size)
 
 void	ft_swap_nbr(int *a, int *b)
 {
-	int tmp;
+	int	tmp;
 
 	tmp = *a;
 	*a = *b;
 	*b = tmp;
-
 	return ;
 }

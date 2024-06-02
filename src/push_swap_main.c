@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_main.c                                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 19:23:20 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/05/05 23:33:30 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/02 13:43:37 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,10 +15,9 @@
 int	main(int ac, char **av)
 {
 	t_list	*stack;
-	
-	//t_list	*orders;
 
-	stack = manage_input_data(ac, av);	
+	//t_list	*orders;
+	stack = manage_input_data(ac, av);
 	manage_push_swap(&stack);
 	/*
 	// PRINT NODES & IDX
@@ -36,21 +35,21 @@ int	main(int ac, char **av)
 
 t_list	*manage_input_data(int ac, char **av)
 {
-	t_list *stack;
-	
+	t_list	*stack;
+
 	stack = NULL;
-	if  (ac < 2)
+	if (ac < 2)
 		exit (0);
 	else if (ac == 2)
 	{
 		check_errors_str(av[1]);
 		stack = create_stack_str(av[1]);
-	}	
+	}
 	else if (ac > 2)
 	{
 		check_errors_av(ac, av);
 		stack = create_stack_av(ac, av);
-	}	
+	}
 	return (stack);
 }
 

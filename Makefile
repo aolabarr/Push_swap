@@ -3,10 +3,10 @@
 #                                                         :::      ::::::::    #
 #    Makefile                                           :+:      :+:    :+:    #
 #                                                     +:+ +:+         +:+      #
-#    By: marvin <marvin@student.42.fr>              +#+  +:+       +#+         #
+#    By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/17 15:08:51 by aolabarr          #+#    #+#              #
-#    Updated: 2024/05/05 23:00:23 by marvin           ###   ########.fr        #
+#    Updated: 2024/06/02 14:12:51 by aolabarr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -30,6 +30,7 @@ SRC =	push_swap_main.c \
 		push_swap_free.c\
 		push_swap_utils.c\
 		push_swap_utils_2.c\
+		push_swap_utils_3.c\
 
 OBJS = $(addprefix $(OBJ_DIR)/,$(SRC:.c=.o))
 
@@ -49,12 +50,12 @@ lib:
 	make -C $(LIBLST_DIR)
 
 fclean: clean
+	rm -R $(OBJ_DIR)
 	rm -f $(NAME) *.out
 	make fclean -C $(LIBFT_DIR)
 	make fclean -C $(LIBLST_DIR)
 
 clean:
-	rm -R $(OBJ_DIR)
 	make clean -C $(LIBFT_DIR)
 	make clean -C $(LIBLST_DIR)
 

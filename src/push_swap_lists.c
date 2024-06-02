@@ -1,7 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push_swap_lists.c                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/06/02 12:13:24 by aolabarr          #+#    #+#             */
+/*   Updated: 2024/06/02 12:13:24 by aolabarr         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
 
 #include "push_swap.h"
 
-void    ft_lst_putnbr_fd(t_list *lst, int fd)
+void	ft_lst_putnbr_fd(t_list *lst, int fd)
 {
 	t_list	*node;
 
@@ -10,8 +21,8 @@ void    ft_lst_putnbr_fd(t_list *lst, int fd)
 	node = lst;
 	while (node != NULL)
 	{
-        ft_putnbr_fd(node -> content, fd);
-        ft_putchar_fd('\n', fd);
+		ft_putnbr_fd(node -> content, fd);
+		ft_putchar_fd('\n', fd);
 		node = node -> next;
 	}
 	return ;

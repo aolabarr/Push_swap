@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap_errors.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 20:46:56 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/05/05 23:34:40 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/02 13:35:04 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,9 +38,9 @@ void	check_errors_av(int ac, char **ptr)
 	i = 1;
 	while (i < ac)
 		if (!ft_str_is_numeric(ptr[i]) || !ft_is_int(ptr[i++]))
-			exit (ft_putstr_fd("Error 1", STDERR));		
+			exit (ft_putstr_fd("Error 1", STDERR));
 	if (!ft_str_norepeat_in_mat(ptr))
-		exit (ft_putstr_fd("Error 2", STDERR));	
+		exit (ft_putstr_fd("Error 2", STDERR));
 	return ;
 }
 
@@ -58,7 +58,8 @@ int	ft_str_is_numeric(char *str)
 	}
 	return (1);
 }
-int ft_is_int(char *str)
+
+int	ft_is_int(char *str)
 {
 	if (ft_strlen(str) >= 10)
 		if (ft_strncmp(MAXINT_STR, str, ft_strlen(str)) < 0)
@@ -69,7 +70,7 @@ int ft_is_int(char *str)
 	return (1);
 }
 
-int ft_str_norepeat_in_mat(char **ptr)
+int	ft_str_norepeat_in_mat(char **ptr)
 {
 	size_t	i;
 	size_t	j;

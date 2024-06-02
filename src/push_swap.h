@@ -6,10 +6,9 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 13:39:09 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/05/17 14:13:58 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/02 13:36:37 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #ifndef PUSH_SWAP_H
 # define PUSH_SWAP_H
@@ -22,9 +21,8 @@
 # define STDERR 2
 # define EXITCODE 1
 # define ERROR_MESSAGE "Error\n"
-# define PARTS 1
+# define PARTS 5
 # define NO_WRITE 0
-
 
 # include <stdio.h>
 # include <unistd.h>

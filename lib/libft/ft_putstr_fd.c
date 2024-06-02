@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: marvin <marvin@student.42.fr>              +#+  +:+       +#+        */
+/*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/11 16:37:25 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/05/04 18:03:31 by marvin           ###   ########.fr       */
+/*   Updated: 2024/06/02 12:04:40 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,5 +18,5 @@ int	ft_putstr_fd(char *s, int fd)
 	if (ft_strncmp(s, "Error", ft_strlen(s)) != 0)
 		return (1);
 	else
-		return(0);
+		return (0);
 }
