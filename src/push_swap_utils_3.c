@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 14:06:20 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/02 15:44:13 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/02 18:03:52 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,3 +64,16 @@ int	min_idx(t_list *stk)
 	}
 	return (min);
 }
+
+void	set_cost_zero(t_list *stk)
+{
+	while (stk != NULL)
+	{
+		stk->cost.ra = 0;
+		stk->cost.rra = 0;
+		stk->cost.rb = 0;
+		stk->cost.rrb = 0;
+		stk = stk->next;
+	}
+}
+

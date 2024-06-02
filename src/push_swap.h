@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 13:39:09 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/02 16:35:02 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/02 18:11:02 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,7 @@ int		max_idx(t_list *stk);
 int		min_idx(t_list *stk);
 
 int     set_cost_stk_a(t_list *stk_a, t_list *node_b);
+void	exe_movements(t_list **stk_a, t_list **stk_b, t_cost cur_cost);
 
 void	ft_free_mat(char **mat);
 void	ft_free_array(int **array);

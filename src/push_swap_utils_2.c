@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 12:13:59 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/02 17:56:34 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/02 18:19:03 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,40 +15,24 @@
 void	empty_stackb(t_list **stk_a, t_list **stk_b)
 {
 	t_cost	cur_cost;
-	int		i;
 
 	while (*stk_b != NULL)
 	{
 		set_cost(*stk_a, *stk_b);
 		cur_cost = min_cost(*stk_b);
-		i = 0;
-		if (cur_cost.ra)
-			while (i++ < cur_cost.ra)
-				rotate(stk_a, 'a');
-		else
-			while (i++ < cur_cost.rra)
-				rev_rotate(stk_a, 'a');
-		i = 0;
-		if (cur_cost.rb)
-			while (i++ < cur_cost.rb)
-				rotate(stk_b, 'b');
-		else
-			while (i++ < cur_cost.rrb)
-				rev_rotate(stk_b, 'b');
-		push_a(stk_a, stk_b);
+		exe_movements(stk_a, stk_b, cur_cost);
 		/*
 		//PRINT NODES & IDX
 		t_list	*node_a;
 		t_list	*node_b;
     	printf("\nStk_A\tidx\n");
-    	node_a = *stk_a;
+		node_a = *stk_a;
 		while (node_a != NULL)
 		{
 			printf("%d\t%d\n", node_a->content, node_a->idx);
 			node_a = node_a -> next;
 		}
     	node_b = *stk_b;
-    	//printf("Stk_B\tidx\n");
     	while (node_b != NULL)
 		{
 			printf("%d\t%d\n", node_b->content, node_b->idx);
@@ -105,18 +89,6 @@ t_cost	min_cost(t_list *stk)
 	return (node->cost);
 }
 
-void	set_cost_zero(t_list *stk)
-{
-	while (stk != NULL)
-	{
-		stk->cost.ra = 0;
-		stk->cost.rra = 0;
-		stk->cost.rb = 0;
-		stk->cost.rrb = 0;
-		stk = stk->next;
-	}
-}
-
 int	set_cost_stk_a(t_list *stk_a, t_list *node_b)
 {
 	int	j;
@@ -142,5 +114,31 @@ int	set_cost_stk_a(t_list *stk_a, t_list *node_b)
 		j++;
 	}
 	return (j);
+}
+
+void	exe_movements(t_list **stk_a, t_list **stk_b, t_cost cur_cost)
+{
+	int	i;
+
+	i = 0;
+
+	//if (cur_cost.ra && cur_cost.rb)
+	//	rotate_double(stk_a, stk_b, NO_WRITE);
+
+
+	if (cur_cost.ra)
+		while (i++ < cur_cost.ra)
+			rotate(stk_a, 'a');
+	else
+		while (i++ < cur_cost.rra)
+			rev_rotate(stk_a, 'a');
+	i = 0;
+	if (cur_cost.rb)
+		while (i++ < cur_cost.rb)
+			rotate(stk_b, 'b');
+	else
+		while (i++ < cur_cost.rrb)
+			rev_rotate(stk_b, 'b');
+	push_a(stk_a, stk_b);
 }
 
