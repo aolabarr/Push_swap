@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 19:23:20 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/02 13:43:37 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:21:59 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,20 +16,8 @@ int	main(int ac, char **av)
 {
 	t_list	*stack;
 
-	//t_list	*orders;
 	stack = manage_input_data(ac, av);
 	manage_push_swap(&stack);
-	/*
-	// PRINT NODES & IDX
-	t_list	*node;
-	printf("\nMAIN\nNode\tidx\n");
-	node = stack;
-	while (node != NULL)
-	{
-		printf("%d\t%d\n", node->content, node->idx);
-		node = node -> next;
-	}
-	*/
 	return (0);
 }
 

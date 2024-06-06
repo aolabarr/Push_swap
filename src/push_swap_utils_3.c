@@ -6,13 +6,11 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 14:06:20 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/06 14:34:52 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:19:10 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-
 
 void	sort_2stack(t_list **stk_a)
 {
@@ -48,19 +46,19 @@ void	sort_3stack(t_list **stk)
 	return ;
 }
 
-void    sort_5stack(t_list **stk_a)
+void	sort_5stack(t_list **stk_a)
 {
-   t_list  **stk_b;
-    
-    stk_b = malloc(sizeof(t_list *));
-    if (!stk_b)
-        exit(1);
-    *stk_b = NULL;
-    push_b(stk_a, stk_b);
-    push_b(stk_a, stk_b);
-    sort_3stack(stk_a);
-    empty_stackb(stk_a, stk_b);
-    ftps_lstclear(stk_b, &free);
-    final_sort(stk_a);
-    return ;
+	t_list	**stk_b;
+
+	stk_b = malloc(sizeof(t_list *));
+	if (!stk_b)
+		exit(1);
+	*stk_b = NULL;
+	push_b(stk_a, stk_b);
+	push_b(stk_a, stk_b);
+	sort_3stack(stk_a);
+	empty_stackb(stk_a, stk_b);
+	ftps_lstclear(stk_b, &free);
+	final_sort(stk_a);
+	return ;
 }

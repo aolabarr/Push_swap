@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 18:51:55 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/06 14:34:37 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:16:09 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ int	max_idx(t_list *stk)
 			max = stk->idx;
 		stk = stk->next;
 	}
-	return(max);
+	return (max);
 }
 
 int	min_idx(t_list *stk)
@@ -59,10 +59,10 @@ int	abs(int a)
 	return (a);
 }
 
-int max(int a, int b)
+int	max(int a, int b)
 {
-    if (a >= b)
-        return (a);
-    else
-        return (b);
+	if (a >= b)
+		return (a);
+	else
+		return (b);
 }

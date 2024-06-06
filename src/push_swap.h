@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 13:39:09 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/06 15:26:00 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:12:00 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,13 +54,16 @@ void	empty_stackb(t_list **stk_a, t_list **stk_b);
 void	set_cost(t_list *stk_a, t_list *stk_b);
 t_cost	min_cost(t_list *stk);
 int		set_cost_stk_a(t_list *stk_a, t_list *node_b);
+
+//EXE
 void	exe_movements(t_list **stk_a, t_list **stk_b, t_cost cur_cost);
-void	exe_double_moves_rot(t_list **stk_a, t_list **stk_b, t_cost *cur_cost);
+t_cost	exe_double_rot_mov(t_list **stk_a, t_list **stk_b, t_cost cur_cost);
+t_cost	exe_double_rev_rot_mov(t_list **stk_a, t_list **stk_b, t_cost cur_cost);
 
 //UTILS 3
 void	sort_2stack(t_list **stk_a);
 void	sort_3stack(t_list **stk_a);
-void    sort_5stack(t_list **stk_a);
+void	sort_5stack(t_list **stk_a);
 
 //UTILS 4
 void	set_cost_zero(t_list *stk);

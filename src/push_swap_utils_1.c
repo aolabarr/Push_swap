@@ -39,25 +39,6 @@ void	push_swap(t_list **stack_a)
 	*stack_b = NULL;
 	fill_stackb(stack_a, stack_b);
 	sort_3stack(stack_a);
-	/*
-    //PRINT NODES & IDX
-    t_list  *node_a;
-    t_list  *node_b;
-    printf("\nStk_A\tidx\n");
-    node_a = *stack_a;
-	while (node_a != NULL)
-	{
-		printf("%d\t%d\n", node_a->content, node_a->idx);
-		node_a = node_a -> next;
-	}
-    node_b = *stack_b;
-    printf("Stk_B\tidx\n");
-    while (node_b != NULL)
-	{
-		printf("%d\t%d\n", node_b->content, node_b->idx);
-		node_b = node_b -> next;
-	}
-    */
 	empty_stackb(stack_a, stack_b);
 	final_sort(stack_a);
 }
@@ -114,4 +95,3 @@ void	final_sort(t_list **stk)
 	}
 	return ;
 }
-
