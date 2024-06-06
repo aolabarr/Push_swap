@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 13:39:09 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/06 14:37:56 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/06 15:26:00 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,6 +55,7 @@ void	set_cost(t_list *stk_a, t_list *stk_b);
 t_cost	min_cost(t_list *stk);
 int		set_cost_stk_a(t_list *stk_a, t_list *node_b);
 void	exe_movements(t_list **stk_a, t_list **stk_b, t_cost cur_cost);
+void	exe_double_moves_rot(t_list **stk_a, t_list **stk_b, t_cost *cur_cost);
 
 //UTILS 3
 void	sort_2stack(t_list **stk_a);

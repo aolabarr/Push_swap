@@ -23,6 +23,8 @@ void	manage_push_swap(t_list **stack)
 		sort_2stack(stack);
 	else if (size == 3)
 		sort_3stack(stack);
+	else if (size == 5)
+		sort_5stack(stack);
 	else
 		push_swap(stack);
 }
@@ -103,12 +105,12 @@ void	final_sort(t_list **stk)
 	if (i <= ftps_lstsize(*stk) / 2)
 	{
 		while ((*stk)->idx != 1)
-			rev_rotate(stk, 'a');
+			rotate(stk, 'a');
 	}
 	else
 	{
 		while ((*stk)->idx != 1)
-			rotate(stk, 'a');
+			rev_rotate(stk, 'a');
 	}
 	return ;
 }
