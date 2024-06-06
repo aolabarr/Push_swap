@@ -88,37 +88,28 @@ void	fill_stackb(t_list **stk_a, t_list **stk_b)
 	}
 }
 
-void	sort_2stack(t_list **stk_a)
+void	final_sort(t_list **stk)
 {
-	swap(stk_a, 'a');
-	return ;
-}
+	int		i;
+	t_list	*node;
 
-void	sort_3stack(t_list **stk)
-{
-	int	a;
-	int	b;
-	int	c;
-
-	a = (*stk)->content;
-	b = (*stk)->next->content;
-	c = (*stk)->next->next->content;
-	if (a > b && b < c && a < c)
-		swap(stk, 'a');
-	else if (a > b && b > c)
+	node = *stk;
+	i = 0;
+	while (node->idx != 1)
 	{
-		swap(stk, 'a');
-		rev_rotate(stk, 'a');
+		i++;
+		node = node -> next;
 	}
-	else if (a > b && b < c && a > c)
-		rotate(stk, 'a');
-	else if (a < b && b > c && a < c)
+	if (i <= ftps_lstsize(*stk) / 2)
 	{
-		swap(stk, 'a');
-		rotate(stk, 'a');
+		while ((*stk)->idx != 1)
+			rev_rotate(stk, 'a');
 	}
-	else if (a < b && b > c && a > c)
-		rev_rotate(stk, 'a');
+	else
+	{
+		while ((*stk)->idx != 1)
+			rotate(stk, 'a');
+	}
 	return ;
 }
 

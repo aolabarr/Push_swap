@@ -6,80 +6,61 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 14:06:20 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/02 18:25:15 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/06 14:34:52 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	final_sort(t_list **stk)
-{
-	int		i;
-	t_list	*node;
 
-	node = *stk;
-	i = 0;
-	while (node->idx != 1)
-	{
-		i++;
-		node = node -> next;
-	}
-	if (i <= ftps_lstsize(*stk) / 2)
-	{
-		while ((*stk)->idx != 1)
-			rev_rotate(stk, 'a');
-	}
-	else
-	{
-		while ((*stk)->idx != 1)
-			rotate(stk, 'a');
-	}
+
+void	sort_2stack(t_list **stk_a)
+{
+	swap(stk_a, 'a');
 	return ;
 }
 
-int	max_idx(t_list *stk)
+void	sort_3stack(t_list **stk)
 {
-	int	max;
+	int	a;
+	int	b;
+	int	c;
 
-	max = 1;
-	while (stk != NULL)
+	a = (*stk)->content;
+	b = (*stk)->next->content;
+	c = (*stk)->next->next->content;
+	if (a > b && b < c && a < c)
+		swap(stk, 'a');
+	else if (a > b && b > c)
 	{
-		if (stk->idx > max)
-			max = stk->idx;
-		stk = stk->next;
+		swap(stk, 'a');
+		rev_rotate(stk, 'a');
 	}
-	return(max);
+	else if (a > b && b < c && a > c)
+		rotate(stk, 'a');
+	else if (a < b && b > c && a < c)
+	{
+		swap(stk, 'a');
+		rotate(stk, 'a');
+	}
+	else if (a < b && b > c && a > c)
+		rev_rotate(stk, 'a');
+	return ;
 }
 
-int	min_idx(t_list *stk)
+void    sort_5stack(t_list **stk_a)
 {
-	int	min;
-
-	min = max_idx(stk);
-	while (stk != NULL)
-	{
-		if (stk->idx < min)
-			min = stk->idx;
-		stk = stk->next;
-	}
-	return (min);
-}
-
-void	set_cost_zero(t_list *stk)
-{
-	while (stk != NULL)
-	{
-		stk->cost.ra = 0;
-		stk->cost.rra = 0;
-		stk->cost.rb = 0;
-		stk->cost.rrb = 0;
-		stk = stk->next;
-	}
-}
-
-int	abs(int a)
-{
-	if (a < 0)
-		a = -a;
-	return (a);
+   t_list  **stk_b;
+    
+    stk_b = malloc(sizeof(t_list *));
+    if (!stk_b)
+        exit(1);
+    *stk_b = NULL;
+    push_b(stk_a, stk_b);
+    push_b(stk_a, stk_b);
+    sort_3stack(stk_a);
+    empty_stackb(stk_a, stk_b);
+    ftps_lstclear(stk_b, &free);
+    final_sort(stk_a);
+    return ;
 }
