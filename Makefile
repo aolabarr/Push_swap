@@ -6,7 +6,7 @@
 #    By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/17 15:08:51 by aolabarr          #+#    #+#              #
-#    Updated: 2024/06/06 16:04:51 by aolabarr         ###   ########.fr        #
+#    Updated: 2024/06/06 17:47:11 by aolabarr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,6 +15,7 @@ NAME = push_swap
 CC = cc
 NO_LINK = -c
 CFLAGS = -Wall -Wextra -Werror
+SFLAGS = -g -fsanitize=address
 
 OBJ_DIR = ./obj
 SRC_DIR = ./src
@@ -48,6 +49,9 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 $(OBJ_DIR):
 	mkdir $(OBJ_DIR)
 
+sanitizer: lib $(OBJ_DIR) $(OBJS)
+	$(CC) $(CFLAGS) $(SFLAGS) $(OBJS) -L$(LIBFT_DIR) -L$(LIBLST_DIR) -lft -llst -o $(NAME)
+
 lib:
 	make -C $(LIBFT_DIR)
 	make -C $(LIBLST_DIR)
@@ -64,7 +68,7 @@ clean:
 
 re: fclean all 
 
-.PHONY: all fclean clean re lib
+.PHONY: all fclean clean re lib sanitizer
 
 
 #.SILENT:

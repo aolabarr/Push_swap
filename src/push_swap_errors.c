@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 20:46:56 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/02 13:35:04 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/06 16:32:03 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	check_errors_av(int ac, char **ptr)
 int	ft_str_is_numeric(char *str)
 {
 	if (*str == '\0')
+		return (0);
+	if ((*str == '-' || *str == '+') && !ft_isdigit(*(str + 1)))
 		return (0);
 	if (*str == '-' || *str == '+')
 		str++;

@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 12:13:59 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/06 16:23:37 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/06 18:06:03 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@ void	empty_stackb(t_list **stk_a, t_list **stk_b)
 	while (*stk_b != NULL)
 	{
 		set_cost(*stk_a, *stk_b);
+		//printf("Prueba\t");
 		cur_cost = min_cost(*stk_b);
 		exe_movements(stk_a, stk_b, cur_cost);
 	}
@@ -29,7 +30,6 @@ void	set_cost(t_list *stk_a, t_list *nb)
 {
 	int		i;
 	int		j;
-	int		aux;
 	int		size[2];
 
 	set_cost_zero(nb);
@@ -47,8 +47,8 @@ void	set_cost(t_list *stk_a, t_list *nb)
 			nb->cost.ra = j;
 		else
 			nb->cost.rra = size[0] - j;
-		aux = nb->cost.ra + nb->cost.rb;
-		nb->cost.total = aux + nb->cost.rra + nb->cost.rrb;
+		nb->cost.total = nb->cost.ra + nb->cost.rb;
+		nb->cost.total += nb->cost.rra + nb->cost.rrb;
 		nb = nb->next;
 		i++;
 	}
@@ -58,19 +58,24 @@ t_cost	min_cost(t_list *stk)
 {
 	int		min;
 	t_list	*node;
+	t_cost	cur_cost;
 
 	min = MAXINT;
 	node = stk;
 	while (node != NULL)
 	{
 		if (node->content < min)
+		{
 			min = node -> content;
+			cur_cost = node -> cost;
+		}	
 		node = node->next;
 	}
-	node = stk;
-	while (node ->content != min)
-		node = node -> next;
-	return (node->cost);
+	//node = stk;
+	//while (node->idx != min)
+	//	node = node -> next;
+	//printf("moved idx: %d\tcost: %d\n", node->idx, node->cost.total);
+	return (cur_cost);
 }
 
 int	set_cost_stk_a(t_list *stk_a, t_list *node_b)
