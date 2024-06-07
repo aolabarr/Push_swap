@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 12:13:59 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/06 18:06:03 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/07 17:35:56 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,8 +19,8 @@ void	empty_stackb(t_list **stk_a, t_list **stk_b)
 	while (*stk_b != NULL)
 	{
 		set_cost(*stk_a, *stk_b);
-		//printf("Prueba\t");
 		cur_cost = min_cost(*stk_b);
+		//printf("cost total: %d (%d, %d, %d, %d)\n", cur_cost.total, cur_cost.ra,cur_cost.rb,cur_cost.rra,cur_cost.rrb); getchar();
 		exe_movements(stk_a, stk_b, cur_cost);
 	}
 	return ;
@@ -47,34 +47,30 @@ void	set_cost(t_list *stk_a, t_list *nb)
 			nb->cost.ra = j;
 		else
 			nb->cost.rra = size[0] - j;
-		nb->cost.total = nb->cost.ra + nb->cost.rb;
-		nb->cost.total += nb->cost.rra + nb->cost.rrb;
+		nb->cost.total = calculate_cost_total(nb->cost);
+		//nb->cost.total += nb->cost.ra + nb->cost.rb;
+		//nb->cost.total += nb->cost.rra + nb->cost.rrb;
+		//printf("cost total: %d\n", nb->cost.total); getchar();
 		nb = nb->next;
 		i++;
 	}
 }
 
-t_cost	min_cost(t_list *stk)
+t_cost	min_cost(t_list *node)
 {
 	int		min;
-	t_list	*node;
 	t_cost	cur_cost;
 
 	min = MAXINT;
-	node = stk;
 	while (node != NULL)
 	{
-		if (node->content < min)
+		if (node->idx < min)
 		{
-			min = node -> content;
+			min = node -> idx;
 			cur_cost = node -> cost;
 		}	
 		node = node->next;
 	}
-	//node = stk;
-	//while (node->idx != min)
-	//	node = node -> next;
-	//printf("moved idx: %d\tcost: %d\n", node->idx, node->cost.total);
 	return (cur_cost);
 }
 
@@ -82,8 +78,10 @@ int	set_cost_stk_a(t_list *stk_a, t_list *node_b)
 {
 	int		j;
 	t_list	*node_a;
+	t_list	*last_a;
 
 	node_a = stk_a;
+	last_a = ftps_lstlast(stk_a);
 	j = 0;
 	if (max_idx(stk_a) < node_b->idx || min_idx(stk_a) > node_b->idx)
 	{
@@ -92,15 +90,27 @@ int	set_cost_stk_a(t_list *stk_a, t_list *node_b)
 			j++;
 			node_a = node_a->next;
 		}
+		return (j);
 	}
-	else
+	else if (last_a->idx < node_b->idx && node_a->idx > node_b->idx)
+		return (j);
+	while (!(node_a->idx < node_b->idx && node_a->next->idx > node_b->idx))
 	{
-		while (node_a->idx < node_b->idx && !(node_a->next->idx > node_b->idx))
-		{
-			j++;
-			node_a = node_a->next;
-		}
 		j++;
+		node_a = node_a->next;
 	}
+	j++;
 	return (j);
+}
+int	calculate_cost_total(t_cost cost)
+{
+	int total;
+	
+	if (cost.ra && cost.rb)
+		total = max(cost.ra, cost.rb);
+	else if (cost.rra && cost.rrb)
+		total = max(cost.rra, cost.rrb);
+	else
+		total = cost.ra + cost.rb + cost.rra + cost.rrb;
+	return (total);
 }

@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 18:51:55 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/06 16:16:09 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/07 12:31:42 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ void	set_cost_zero(t_list *stk)
 		stk->cost.rra = 0;
 		stk->cost.rb = 0;
 		stk->cost.rrb = 0;
+		stk->cost.total = 0;
 		stk = stk->next;
 	}
 }
