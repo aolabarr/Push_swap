@@ -1,29 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_orders_2.c                               :+:      :+:    :+:   */
+/*   ps_bonus_orders_2.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/05/17 14:08:25 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/08 19:31:05 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/08 18:30:22 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ps_bonus.h"
 
-void	rotate_double(t_list **stk_a, t_list **stk_b, int id)
+void	rotate_double_bn(t_list **stk_a, t_list **stk_b)
 {
-	rotate(stk_a, id);
-	rotate(stk_b, id);
-	if (id == NO_WRITE)
-		ft_putstr_fd("rr\n", STDOUT_FILENO);
+	rotate_bn(stk_a);
+	rotate_bn(stk_b);
 }
 
-void	rev_rotate_double(t_list **stk_a, t_list **stk_b, int id)
+void	rev_rotate_double_bn(t_list **stk_a, t_list **stk_b)
 {
-	rev_rotate(stk_a, id);
-	rev_rotate(stk_b, id);
-	if (id == NO_WRITE)
-		ft_putstr_fd("rrr\n", STDOUT_FILENO);
+	rev_rotate_bn(stk_a);
+	rev_rotate_bn(stk_b);
+}
+
+void	swap_double_bn(t_list **stk_a, t_list **stk_b)
+{
+	swap_bn(stk_a);
+	swap_bn(stk_b);
 }

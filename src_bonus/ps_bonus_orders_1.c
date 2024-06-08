@@ -1,18 +1,18 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_orders.c                                 :+:      :+:    :+:   */
+/*   ps_bonus_orders_1.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/06/02 12:13:40 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/02 12:13:40 by aolabarr         ###   ########.fr       */
+/*   Created: 2024/06/08 17:37:20 by aolabarr          #+#    #+#             */
+/*   Updated: 2024/06/08 17:37:20 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "ps_bonus.h"
 
-void	swap(t_list **stk, char id)
+void	swap_bn(t_list **stk)
 {
 	t_list	*tmp1;
 	t_list	*tmp2;
@@ -24,14 +24,10 @@ void	swap(t_list **stk, char id)
 	(*stk)->next->next = (*stk);
 	(*stk)->next = tmp2;
 	*stk = tmp1;
-	if (id == 'a')
-		ft_putstr_fd("sa\n", STDOUT_FILENO);
-	else if (id == 'b')
-		ft_putstr_fd("sb\n", STDOUT_FILENO);
 	return ;
 }
 
-void	rotate(t_list **stk, char id)
+void	rotate_bn(t_list **stk)
 {
 	t_list	*tmp;
 	t_list	*last;
@@ -41,14 +37,10 @@ void	rotate(t_list **stk, char id)
 	last->next = *stk;
 	(*stk)->next = NULL;
 	*stk = tmp;
-	if (id == 'a')
-		ft_putstr_fd("ra\n", STDOUT_FILENO);
-	else if (id == 'b')
-		ft_putstr_fd("rb\n", STDOUT_FILENO);
 	return ;
 }
 
-void	rev_rotate(t_list **stk, char id)
+void	rev_rotate_bn(t_list **stk)
 {
 	t_list	*tmp;
 	t_list	*slast;
@@ -67,14 +59,10 @@ void	rev_rotate(t_list **stk, char id)
 	last -> next = *stk;
 	slast -> next = NULL;
 	*stk = tmp;
-	if (id == 'a')
-		ft_putstr_fd("rra\n", STDOUT_FILENO);
-	else if (id == 'b')
-		ft_putstr_fd("rrb\n", STDOUT_FILENO);
 	return ;
 }
 
-void	push_a(t_list **stk_a,	t_list **stk_b)
+void	push_a_bn(t_list **stk_a, t_list **stk_b)
 {
 	t_list	*tmp;
 
@@ -91,11 +79,10 @@ void	push_a(t_list **stk_a,	t_list **stk_b)
 		*stk_a = *stk_b;
 		*stk_b = NULL;
 	}
-	ft_putstr_fd("pa\n", STDOUT_FILENO);
 	return ;
 }
 
-void	push_b(t_list **stk_a, t_list **stk_b)
+void	push_b_bn(t_list **stk_a, t_list **stk_b)
 {
 	t_list	*tmp;
 
@@ -112,6 +99,5 @@ void	push_b(t_list **stk_a, t_list **stk_b)
 		*stk_b = *stk_a;
 		*stk_a = tmp;
 	}
-	ft_putstr_fd("pb\n", STDOUT_FILENO);
 	return ;
 }

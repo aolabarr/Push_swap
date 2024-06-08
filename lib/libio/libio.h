@@ -1,29 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_orders_2.c                               :+:      :+:    :+:   */
+/*   libio.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 14:08:25 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/08 19:31:05 by aolabarr         ###   ########.fr       */
+/*   Created: 2024/06/08 16:58:25 by aolabarr          #+#    #+#             */
+/*   Updated: 2024/06/08 17:01:03 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#ifndef LIBIO_H
+ # define LIBIO_H
 
-void	rotate_double(t_list **stk_a, t_list **stk_b, int id)
-{
-	rotate(stk_a, id);
-	rotate(stk_b, id);
-	if (id == NO_WRITE)
-		ft_putstr_fd("rr\n", STDOUT_FILENO);
-}
+ # include "ft_printf.h"
+ # include "get_next_line.h"
 
-void	rev_rotate_double(t_list **stk_a, t_list **stk_b, int id)
-{
-	rev_rotate(stk_a, id);
-	rev_rotate(stk_b, id);
-	if (id == NO_WRITE)
-		ft_putstr_fd("rrr\n", STDOUT_FILENO);
-}
+#endif

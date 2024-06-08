@@ -1,29 +1,26 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   push_swap_orders_2.c                               :+:      :+:    :+:   */
+/*   ft_strjoin_freed.c                                 :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/05/17 14:08:25 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/08 19:31:05 by aolabarr         ###   ########.fr       */
+/*   Created: 2024/01/02 18:21:19 by aolabarr          #+#    #+#             */
+/*   Updated: 2024/06/08 16:54:35 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "push_swap.h"
+#include "libft.h"
 
-void	rotate_double(t_list **stk_a, t_list **stk_b, int id)
+char	*ft_strjoin_freed(char *s1, char const *s2)
 {
-	rotate(stk_a, id);
-	rotate(stk_b, id);
-	if (id == NO_WRITE)
-		ft_putstr_fd("rr\n", STDOUT_FILENO);
-}
+	char	*str;
 
-void	rev_rotate_double(t_list **stk_a, t_list **stk_b, int id)
-{
-	rev_rotate(stk_a, id);
-	rev_rotate(stk_b, id);
-	if (id == NO_WRITE)
-		ft_putstr_fd("rrr\n", STDOUT_FILENO);
+	str = malloc((ft_strlen(s1) + ft_strlen(s2) + 1) * sizeof(char));
+	if (!str)
+		return (NULL);
+	ft_strlcpy(str, s1, ft_strlen(s1) + 1);
+	ft_strlcpy(str + ft_strlen(s1), s2, ft_strlen(s2) + 1);
+	free(s1);
+	return (str);
 }

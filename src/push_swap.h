@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 13:39:09 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/08 13:16:39 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/08 15:39:16 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define STDERR 2
 # define EXITCODE 1
 # define ERROR_MESSAGE "Error\n"
-# define PARTS 1
+# define PARTS 10
 # define NO_WRITE 0
 
 # include <stdio.h>
@@ -30,7 +30,7 @@
 # include "../lib/libft/libft.h"
 # include "../lib/liblst/liblst.h"
 
-// MAIN
+// PARSE
 t_list	*manage_input_data(int ac, char **av);
 t_list	*create_stack_av(int ac, char **ptr);
 t_list	*create_stack_str(char *str);

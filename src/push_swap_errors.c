@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 20:46:56 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/06 16:32:03 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/08 19:32:31 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,9 +23,9 @@ void	check_errors_str(char *str)
 	i = 0;
 	while (ptr[i] != NULL)
 		if (!ft_str_is_numeric(ptr[i]) || !ft_is_int(ptr[i++]))
-			exit (ft_putstr_fd(ERROR_MESSAGE, STDERR));
+			exit (ft_putstr_fd(ERROR_MESSAGE, STDERR_FILENO));
 	if (!ft_str_norepeat_in_mat(ptr))
-		exit (ft_putstr_fd(ERROR_MESSAGE, STDERR));
+		exit (ft_putstr_fd(ERROR_MESSAGE, STDERR_FILENO));
 	return ;
 }
 
@@ -38,9 +38,9 @@ void	check_errors_av(int ac, char **ptr)
 	i = 1;
 	while (i < ac)
 		if (!ft_str_is_numeric(ptr[i]) || !ft_is_int(ptr[i++]))
-			exit (ft_putstr_fd("Error 1", STDERR));
+			exit (ft_putstr_fd(ERROR_MESSAGE, STDERR_FILENO));
 	if (!ft_str_norepeat_in_mat(ptr))
-		exit (ft_putstr_fd("Error 2", STDERR));
+		exit (ft_putstr_fd(ERROR_MESSAGE, STDERR_FILENO));
 	return ;
 }
 
