@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 13:39:09 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/07 16:16:46 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/08 13:16:39 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,8 +58,8 @@ int     calculate_cost_total(t_cost cost);
 
 //EXE
 void	exe_movements(t_list **stk_a, t_list **stk_b, t_cost cur_cost);
-t_cost	exe_double_rot_mov(t_list **stk_a, t_list **stk_b, t_cost cur_cost);
-t_cost	exe_double_rev_rot_mov(t_list **stk_a, t_list **stk_b, t_cost cur_cost);
+t_cost	exe_double_rot(t_list **stk_a, t_list **stk_b, t_cost cur_cost);
+t_cost	exe_double_rev_rot(t_list **stk_a, t_list **stk_b, t_cost cur_cost);
 
 //UTILS 3
 void	sort_2stack(t_list **stk_a);

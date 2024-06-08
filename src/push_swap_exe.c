@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 16:03:50 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/06 16:15:22 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/08 13:16:33 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,9 +17,9 @@ void	exe_movements(t_list **stk_a, t_list **stk_b, t_cost cur_cost)
 	int	i;
 
 	if (cur_cost.ra && cur_cost.rb)
-		cur_cost = exe_double_rot_mov(stk_a, stk_b, cur_cost);
+		cur_cost = exe_double_rot(stk_a, stk_b, cur_cost);
 	if (cur_cost.rra && cur_cost.rrb)
-		cur_cost = exe_double_rev_rot_mov(stk_a, stk_b, cur_cost);
+		cur_cost = exe_double_rev_rot(stk_a, stk_b, cur_cost);
 	i = 0;
 	if (cur_cost.ra)
 		while (i++ < cur_cost.ra)
@@ -37,7 +37,7 @@ void	exe_movements(t_list **stk_a, t_list **stk_b, t_cost cur_cost)
 	push_a(stk_a, stk_b);
 }
 
-t_cost	exe_double_rot_mov(t_list **stk_a, t_list **stk_b, t_cost cur_cost)
+t_cost	exe_double_rot(t_list **stk_a, t_list **stk_b, t_cost cur_cost)
 {
 	int	rpt;
 	int	i;
@@ -51,15 +51,20 @@ t_cost	exe_double_rot_mov(t_list **stk_a, t_list **stk_b, t_cost cur_cost)
 		cur_cost.ra = cur_cost.ra - cur_cost.rb;
 		cur_cost.rb = 0;
 	}
-	else
+	else if (cur_cost.ra < cur_cost.rb)
 	{
 		cur_cost.rb = cur_cost.rb - cur_cost.ra;
 		cur_cost.ra = 0;
 	}
+	else
+	{
+		cur_cost.ra = 0;
+		cur_cost.rb = 0;
+	}
 	return (cur_cost);
 }
 
-t_cost	exe_double_rev_rot_mov(t_list **stk_a, t_list **stk_b, t_cost cur_cost)
+t_cost	exe_double_rev_rot(t_list **stk_a, t_list **stk_b, t_cost cur_cost)
 {
 	int	rpt;
 	int	i;
@@ -73,10 +78,15 @@ t_cost	exe_double_rev_rot_mov(t_list **stk_a, t_list **stk_b, t_cost cur_cost)
 		cur_cost.rra = cur_cost.rra - cur_cost.rrb;
 		cur_cost.rrb = 0;
 	}
-	else
+	else if (cur_cost.rra < cur_cost.rrb)
 	{
 		cur_cost.rrb = cur_cost.rrb - cur_cost.rra;
 		cur_cost.rra = 0;
+	}
+	else
+	{
+		cur_cost.rra = 0;
+		cur_cost.rrb = 0;
 	}
 	return (cur_cost);
 }
