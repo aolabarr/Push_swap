@@ -6,7 +6,7 @@
 #    By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/17 15:08:51 by aolabarr          #+#    #+#              #
-#    Updated: 2024/06/08 18:29:55 by aolabarr         ###   ########.fr        #
+#    Updated: 2024/06/09 20:06:52 by aolabarr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -15,8 +15,8 @@ NAME_BONUS = checker
 
 CC = cc
 NO_LINK = -c
-CFLAGS = -Wall -Wextra -Werror
-SFLAGS = -g -fsanitize=address
+CFLAGS = -Wall -Wextra -Werror -g3
+SFLAGS =  -fsanitize=leak
 
 OBJ_DIR = ./obj
 SRC_DIR = ./src
@@ -26,7 +26,6 @@ SRC_DIR_BONUS = ./src_bonus
 INC_DIR = ./lib
 LIBFT_DIR = ./lib/libft
 LIBLST_DIR = ./lib/liblst
-LIBIO_DIR = ./lib/libio
 
 SRC =	push_swap_main.c \
 		push_swap_parse.c\
@@ -73,7 +72,7 @@ sanitizer: lib $(OBJ_DIR) $(OBJS)
 bonus: lib $(OBJ_DIR_BONUS) $(NAME_BONUS)
 	
 $(NAME_BONUS): $(OBJS_BONUS) $(OBJS_BONUS_AUX)
-	$(CC) $(CFLAGS) $(OBJS_BONUS) $(OBJS_BONUS_AUX) -L$(LIBFT_DIR) -L$(LIBLST_DIR) -L$(LIBIO_DIR) -lft -llst -lio -o $(NAME_BONUS)
+	$(CC) $(CFLAGS) $(OBJS_BONUS) $(OBJS_BONUS_AUX) -L$(LIBFT_DIR) -L$(LIBLST_DIR) -lft -llst -o $(NAME_BONUS)
 
 $(OBJ_DIR_BONUS)/%.o: $(SRC_DIR_BONUS)/%.c
 	$(CC) $(NO_LINK) $(CFLAGS) -I$(INC_DIR) $< -o $@
@@ -87,21 +86,18 @@ $(OBJ_DIR_BONUS):
 lib:
 	make -C $(LIBFT_DIR)
 	make -C $(LIBLST_DIR)
-	make -C $(LIBIO_DIR)
 
 fclean: clean
 	rm -f $(NAME) *.out
 	rm -f $(NAME_BONUS)
 	make fclean -C $(LIBFT_DIR)
 	make fclean -C $(LIBLST_DIR)
-	make fclean -C $(LIBIO_DIR)
 
 clean:
 	@if [ -d $(OBJ_DIR) ]; then rm -rf $(OBJ_DIR); fi
 	@if [ -d $(OBJ_DIR_BONUS) ]; then rm -rf $(OBJ_DIR_BONUS); fi
 	make clean -C $(LIBFT_DIR)
 	make clean -C $(LIBLST_DIR)
-	make clean -C $(LIBIO_DIR)
 
 re: fclean all
 

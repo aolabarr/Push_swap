@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 19:23:20 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/08 15:37:31 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/09 19:44:59 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,7 @@ t_list	*create_stack_str(char *str)
 	}
 	if (ptr[0] != NULL)
 		put_sorted_index(lst);
+	ft_free_mat(ptr);
 	return (lst);
 }
 

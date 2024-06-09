@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 20:46:56 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/08 19:32:31 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/09 19:40:49 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,6 +26,7 @@ void	check_errors_str(char *str)
 			exit (ft_putstr_fd(ERROR_MESSAGE, STDERR_FILENO));
 	if (!ft_str_norepeat_in_mat(ptr))
 		exit (ft_putstr_fd(ERROR_MESSAGE, STDERR_FILENO));
+	ft_free_mat(ptr);
 	return ;
 }
 

@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 15:21:31 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/08 18:36:46 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/09 18:52:29 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,9 +14,9 @@
 # define PS_BONUS_H
 
 # include "../src/push_swap.h"
-# include "../lib/libio/libio.h"
+# include <stdlib.h>
 
-# define BUFF_SIZE 1
+# define BUFFER_SIZE 1
 
 char	**read_stdin(void);
 void	exe_order(t_list **stack_a, t_list **stack_b, char *ord);

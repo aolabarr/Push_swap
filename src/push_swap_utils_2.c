@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 12:13:59 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/08 13:21:00 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/09 14:38:23 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,9 +64,9 @@ t_cost	min_cost(t_list *node)
 	min = MAXINT;
 	while (node != NULL)
 	{
-		if (node->idx < min)
+		if (node->cost.total < min)
 		{
-			min = node -> idx;
+			min = node -> cost.total;
 			cur_cost = node -> cost;
 		}	
 		node = node->next;

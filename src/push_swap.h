@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 13:39:09 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/08 15:39:16 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/09 14:43:53 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,7 +21,7 @@
 # define STDERR 2
 # define EXITCODE 1
 # define ERROR_MESSAGE "Error\n"
-# define PARTS 10
+# define PARTS 4
 # define NO_WRITE 0
 
 # include <stdio.h>
