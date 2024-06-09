@@ -6,17 +6,15 @@
 #    By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/17 15:08:51 by aolabarr          #+#    #+#              #
-#    Updated: 2024/06/09 20:06:52 by aolabarr         ###   ########.fr        #
+#    Updated: 2024/06/09 20:53:40 by aolabarr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 NAME = push_swap
 NAME_BONUS = checker
-
-CC = cc
 NO_LINK = -c
 CFLAGS = -Wall -Wextra -Werror -g3
-SFLAGS =  -fsanitize=leak
+SFLAGS =  -fsanitize=address
 
 OBJ_DIR = ./obj
 SRC_DIR = ./src
@@ -27,7 +25,7 @@ INC_DIR = ./lib
 LIBFT_DIR = ./lib/libft
 LIBLST_DIR = ./lib/liblst
 
-SRC =	push_swap_main.c \
+SRC =	push_swap_main.c\
 		push_swap_parse.c\
 		push_swap_errors.c\
 		push_swap_arrays.c\
@@ -58,7 +56,7 @@ OBJS_BONUS_AUX = $(addprefix $(OBJ_DIR_BONUS)/,$(SRC_BONUS_AUX:.c=.o))
 all: lib $(OBJ_DIR) $(NAME)
 
 $(NAME): $(OBJS)
-	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -L$(LIBLST_DIR) -lft -llst -o $(NAME)
+	$(CC) $(CFLAGS) $(OBJS) -L$(LIBFT_DIR) -L$(LIBLST_DIR) -lft -llst  -o $(NAME)
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 	$(CC) $(NO_LINK) $(CFLAGS) -I$(INC_DIR) $< -o $@
