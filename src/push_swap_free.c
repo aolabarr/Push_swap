@@ -12,11 +12,8 @@
 
 #include "push_swap.h"
 
-void	ft_free_mat(char **mat)
+void	ft_free_mat(char **mat, size_t size)
 {
-	size_t	size;
-
-	size = ft_matsize(mat);
 	while (size)
 	{
 		free(mat[size]);

@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 15:21:31 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/09 18:52:29 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:04:31 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,7 @@
 
 char	**read_stdin(void);
 void	exe_order(t_list **stack_a, t_list **stack_b, char *ord);
+void	write_result(t_list *stack_a, t_list *stack_b);
 
 // ORDERS 1
 void	swap_bn(t_list **stk);

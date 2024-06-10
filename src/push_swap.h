@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 13:39:09 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/09 20:46:51 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/10 10:19:32 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,13 +32,12 @@
 
 // PARSE
 t_list	*manage_input_data(int ac, char **av);
-t_list	*create_stack_av(int ac, char **ptr);
-t_list	*create_stack_str(char *str);
+t_list	*create_stack(char **ptr);
+char	**copy_arguments(int ac, char **av);
 void	put_sorted_index(t_list *stack);
 
 // ERRORS
-void	check_errors_str(char *str);
-void	check_errors_av(int ac, char **ptr);
+void	check_errors(char **ptr);
 int		ft_str_is_numeric(char *str);
 int		ft_is_int(char *str);
 int		ft_str_norepeat_in_mat(char **ptr);
@@ -74,7 +73,7 @@ int		abs(int a);
 int		max(int a, int b);
 
 //FREE
-void	ft_free_mat(char **mat);
+void	ft_free_mat(char **mat, size_t size);
 void	ft_free_array(int **array);
 
 //LISTS

@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 19:23:20 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/09 21:26:56 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/10 11:25:20 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,57 +15,42 @@
 t_list	*manage_input_data(int ac, char **av)
 {
 	t_list	*stack;
+	char	**ptr;
 
 	stack = NULL;
 	if (ac < 2)
-		exit (0);
+		exit (EXITCODE);
 	else if (ac == 2)
-	{
-		check_errors_str(av[1]);
-		stack = create_stack_str(av[1]);
-	}
+		ptr = ft_split(av[1], ' ');
 	else if (ac > 2)
+		ptr = copy_arguments(ac, av);
+	if (!ptr)
+		exit(EXITCODE);
+	/*
+	size_t i = 0;
+	printf("prueba 0\n");
+	while (i < ft_matsize(ptr))
 	{
-		check_errors_av(ac, av);
-		stack = create_stack_av(ac, av);
+		printf("%s\n", ptr[i]);
+		i++;
 	}
+	*/
+	//printf("prueba 1\n");
+	check_errors(ptr);
+	//printf("prueba 2\n");
+	stack = create_stack(ptr);
+	ft_free_mat(ptr, ft_matsize(ptr));
+	//printf("prueba 3\n");
+	//ft_lst_putnbr_fd(stack, STDOUT_FILENO);
 	return (stack);
 }
 
-t_list	*create_stack_av(int ac, char **ptr)
+t_list	*create_stack(char **ptr)
 {
 	t_list	*lst;
 	t_list	*node;
-	int		i;
+	size_t		i;
 
-	if (!ptr)
-		exit (EXITCODE);
-	i = 1;
-	lst = ftps_lstnew(ft_atoi(ptr[i++]));
-	if (!lst)
-		exit(EXITCODE);
-	while (i < ac)
-	{
-		node = ftps_lstnew(ft_atoi(ptr[i++]));
-		if (!node)
-			exit(EXITCODE);
-		ftps_lstadd_back(&lst, node);
-	}
-	if (ptr[0] != NULL)
-		put_sorted_index(lst);
-	return (lst);
-}
-
-t_list	*create_stack_str(char *str)
-{
-	t_list	*lst;
-	t_list	*node;
-	char	**ptr;
-	size_t	i;
-
-	ptr = ft_split(str, ' ');
-	if (!ptr)
-		exit (EXITCODE);
 	i = 0;
 	lst = ftps_lstnew(ft_atoi(ptr[i++]));
 	if (!lst)
@@ -74,13 +59,37 @@ t_list	*create_stack_str(char *str)
 	{
 		node = ftps_lstnew(ft_atoi(ptr[i++]));
 		if (!node)
+		{
+			ftps_lstclear(&lst, &free);
 			exit(EXITCODE);
+		}	
 		ftps_lstadd_back(&lst, node);
 	}
 	if (ptr[0] != NULL)
 		put_sorted_index(lst);
-	ft_free_mat(ptr);
 	return (lst);
+}
+
+char	**copy_arguments(int ac, char **av)
+{
+	char	**ptr;
+	int		i;
+
+	ptr = malloc(ac * sizeof(char *));
+	if (!ptr)
+		return (NULL);
+	i = 0;
+	//printf("ac: %d\n", ac);
+	while (i < ac - 1)
+	{
+		ptr[i] = malloc(sizeof(char *));
+		if (!ptr[i])
+			return (ft_free_mat(ptr, i), NULL);
+		ft_strlcpy(ptr[i], av[i + 1], ft_strlen(av[i + 1]) + 1);
+		i++;
+	}
+	ptr[i] = NULL;
+	return (ptr);
 }
 
 void	put_sorted_index(t_list *stack)

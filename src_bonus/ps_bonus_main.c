@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 15:20:26 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/09 19:37:58 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:05:48 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,29 +16,28 @@
 int	main(int ac, char** av)
 {
 	t_list	*stack_a;
-	t_list	*stack_b;
+	t_list	**stack_b;
 	char	**ords;
 	size_t	i;
 
+	ords = read_stdin();
+	if (!ords)
+		exit(EXITCODE);
+	i = 0;
 	stack_a = manage_input_data(ac, av);
 	stack_b = malloc(sizeof(t_list *));
 	if (!stack_b)
-		exit(1);
-	stack_b = NULL;
-	ords = read_stdin();
-	i = 0;
-	//ft_lst_putnbr_fd(stack_a, STDOUT_FILENO);
+		exit(EXITCODE);
+	*stack_b = NULL;
 	while (i < ft_matsize(ords))
 	{
-		exe_order(&stack_a, &stack_b, ords[i]);
+		exe_order(&stack_a, stack_b, ords[i]);
 		i++;
 	}
-	//ft_lst_putnbr_fd(stack_a, STDOUT_FILENO);
-	if (ft_lst_is_sorted(stack_a) && stack_b == NULL)
-		ft_putendl_fd("OK", STDOUT_FILENO);
-	else
-		ft_putendl_fd("KO", STDOUT_FILENO);
-	ftps_lstclear(stack_b);
+	ft_free_mat(ords, ft_matsize(ords));
+	write_result(stack_a, *stack_b);
+	ftps_lstclear(&stack_a, &free);
+	ftps_lstclear(stack_b, &free);
 	return (0);
 }
 
@@ -51,21 +50,28 @@ char	**read_stdin(void)
 
 	read_bytes = 1;
 	str = ft_strdup("");
-	//int fd = open("prueba.txt", O_RDONLY);
+	if (!str)
+		return (NULL);
 	while (read_bytes > 0)
 	{
 		read_bytes = read(STDIN_FILENO, buffer, BUFFER_SIZE);
+		if (read_bytes < 0)
+			return (free(str), NULL);
 		buffer[read_bytes] = '\0'; 
-		//printf("%d\t%s\n", read_bytes, buffer);
 		str = ft_strjoin_freed(str, buffer);
+		if (!str)
+			return (NULL);
 	}
-	//printf("Bonus:\n%s\n",str);
 	ords = ft_split(str, '\n');
+	if (!ords)
+		return (free(str), NULL);
+	free (str);
 	return (ords);
 }
 
 void	exe_order(t_list **stack_a, t_list **stack_b, char *ord)
 {
+	//write(1, ord, ft_strlen(ord));
 	if (!ft_strncmp(ord, "sa", ft_strlen("sa")))
 		swap_bn(stack_a);
 	else if (!ft_strncmp(ord, "sb", ft_strlen("sb")))
@@ -88,5 +94,13 @@ void	exe_order(t_list **stack_a, t_list **stack_b, char *ord)
 		rev_rotate_double_bn(stack_a, stack_b);
 	else if (!ft_strncmp(ord, "rr", ft_strlen("rr")))
 		rotate_double_bn(stack_a, stack_b);
+	return ;
+}
+void	write_result(t_list *stack_a, t_list *stack_b)
+{
+	if (ft_lst_is_sorted(stack_a) && stack_b == NULL)
+		ft_putendl_fd("OK", STDOUT_FILENO);
+	else
+		ft_putendl_fd("KO", STDOUT_FILENO);
 	return ;
 }

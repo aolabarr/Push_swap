@@ -6,7 +6,7 @@
 #    By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/12/17 15:08:51 by aolabarr          #+#    #+#              #
-#    Updated: 2024/06/09 20:53:40 by aolabarr         ###   ########.fr        #
+#    Updated: 2024/06/10 10:59:16 by aolabarr         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -68,7 +68,7 @@ sanitizer: lib $(OBJ_DIR) $(OBJS)
 	$(CC) $(CFLAGS) $(SFLAGS) $(OBJS) -L$(LIBFT_DIR) -L$(LIBLST_DIR) -lft -llst -o $(NAME)
 
 bonus: lib $(OBJ_DIR_BONUS) $(NAME_BONUS)
-	
+
 $(NAME_BONUS): $(OBJS_BONUS) $(OBJS_BONUS_AUX)
 	$(CC) $(CFLAGS) $(OBJS_BONUS) $(OBJS_BONUS_AUX) -L$(LIBFT_DIR) -L$(LIBLST_DIR) -lft -llst -o $(NAME_BONUS)
 
@@ -80,6 +80,9 @@ $(OBJ_DIR_BONUS)/%.o: $(SRC_DIR)/%.c
 
 $(OBJ_DIR_BONUS):
 	mkdir $(OBJ_DIR_BONUS)
+
+bonus_sanitizer: lib $(OBJ_DIR_BONUS) $(OBJS_BONUS) $(OBJS_BONUS_AUX)
+	$(CC) $(CFLAGS) $(SFLAGS) $(OBJS_BONUS) $(OBJS_BONUS_AUX) -L$(LIBFT_DIR) -L$(LIBLST_DIR) -lft -llst -o $(NAME_BONUS)
 
 lib:
 	make -C $(LIBFT_DIR)
