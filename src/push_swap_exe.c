@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/06 16:03:50 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/09 14:39:21 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:16:45 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@ t_cost	exe_double_rot(t_list **stk_a, t_list **stk_b, t_cost cur_cost)
 		cur_cost.ra = 0;
 		cur_cost.rb = 0;
 	}
-	//printf("cost total*: %d (%d, %d, %d, %d)\n", cur_cost.total, cur_cost.ra,cur_cost.rb,cur_cost.rra,cur_cost.rrb);
 	return (cur_cost);
 }
 
@@ -89,6 +88,5 @@ t_cost	exe_double_rev_rot(t_list **stk_a, t_list **stk_b, t_cost cur_cost)
 		cur_cost.rra = 0;
 		cur_cost.rrb = 0;
 	}
-	//printf("cost total**: %d (%d, %d, %d, %d)\n", cur_cost.total, cur_cost.ra,cur_cost.rb,cur_cost.rra,cur_cost.rrb);
 	return (cur_cost);
 }

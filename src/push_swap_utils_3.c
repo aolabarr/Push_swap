@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 14:06:20 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/06 16:19:10 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/10 16:36:30 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,6 +59,7 @@ void	sort_5stack(t_list **stk_a)
 	sort_3stack(stk_a);
 	empty_stackb(stk_a, stk_b);
 	ftps_lstclear(stk_b, &free);
+	free(stk_b);
 	final_sort(stk_a);
 	return ;
 }

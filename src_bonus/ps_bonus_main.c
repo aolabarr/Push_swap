@@ -6,14 +6,14 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 15:20:26 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/10 12:05:48 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:21:09 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ps_bonus.h"
 #include <fcntl.h>
 
-int	main(int ac, char** av)
+int	main(int ac, char **av)
 {
 	t_list	*stack_a;
 	t_list	**stack_b;
@@ -57,7 +57,7 @@ char	**read_stdin(void)
 		read_bytes = read(STDIN_FILENO, buffer, BUFFER_SIZE);
 		if (read_bytes < 0)
 			return (free(str), NULL);
-		buffer[read_bytes] = '\0'; 
+		buffer[read_bytes] = '\0';
 		str = ft_strjoin_freed(str, buffer);
 		if (!str)
 			return (NULL);
@@ -71,7 +71,6 @@ char	**read_stdin(void)
 
 void	exe_order(t_list **stack_a, t_list **stack_b, char *ord)
 {
-	//write(1, ord, ft_strlen(ord));
 	if (!ft_strncmp(ord, "sa", ft_strlen("sa")))
 		swap_bn(stack_a);
 	else if (!ft_strncmp(ord, "sb", ft_strlen("sb")))
@@ -96,6 +95,7 @@ void	exe_order(t_list **stack_a, t_list **stack_b, char *ord)
 		rotate_double_bn(stack_a, stack_b);
 	return ;
 }
+
 void	write_result(t_list *stack_a, t_list *stack_b)
 {
 	if (ft_lst_is_sorted(stack_a) && stack_b == NULL)

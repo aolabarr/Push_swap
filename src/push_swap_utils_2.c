@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/02 12:13:59 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/09 14:38:23 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:15:22 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	empty_stackb(t_list **stk_a, t_list **stk_b)
 	{
 		set_cost(*stk_a, *stk_b);
 		cur_cost = min_cost(*stk_b);
-		//printf("cost total: %d (%d, %d, %d, %d)\n", cur_cost.total, cur_cost.ra,cur_cost.rb,cur_cost.rra,cur_cost.rrb); getchar();
 		exe_movements(stk_a, stk_b, cur_cost);
 	}
 	return ;
@@ -48,9 +47,6 @@ void	set_cost(t_list *stk_a, t_list *nb)
 		else
 			nb->cost.rra = size[0] - j;
 		nb->cost.total = calculate_cost_total(nb->cost);
-		//nb->cost.total += nb->cost.ra + nb->cost.rb;
-		//nb->cost.total += nb->cost.rra + nb->cost.rrb;
-		//printf("cost total: %d\n", nb->cost.total); getchar();
 		nb = nb->next;
 		i++;
 	}
@@ -68,7 +64,7 @@ t_cost	min_cost(t_list *node)
 		{
 			min = node -> cost.total;
 			cur_cost = node -> cost;
-		}	
+		}
 		node = node->next;
 	}
 	return (cur_cost);
@@ -102,10 +98,11 @@ int	set_cost_stk_a(t_list *stk_a, t_list *node_b)
 	j++;
 	return (j);
 }
+
 int	calculate_cost_total(t_cost cost)
 {
-	int total;
-	
+	int	total;
+
 	if (cost.ra && cost.rb)
 		total = max(cost.ra, cost.rb);
 	else if (cost.rra && cost.rrb)

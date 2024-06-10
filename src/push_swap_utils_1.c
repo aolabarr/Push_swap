@@ -35,12 +35,12 @@ void	push_swap(t_list **stack_a)
 
 	stack_b = malloc(sizeof(t_list *));
 	if (!stack_b)
-		exit(1);
+		exit(EXITCODE);
 	*stack_b = NULL;
 	fill_stackb(stack_a, stack_b);
 	sort_3stack(stack_a);
 	empty_stackb(stack_a, stack_b);
-	free(stack_b); 
+	free(stack_b);
 	final_sort(stack_a);
 }
 

@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 20:46:56 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/10 10:19:28 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:13:44 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,18 +18,15 @@ void	check_errors(char **ptr)
 
 	if (ptr[0] == NULL)
 		exit (ft_putstr_fd(ERROR_MESSAGE, STDERR_FILENO));
-	//printf("size 1:%ld\n", ft_matsize(ptr));
 	i = 0;
 	while (i < ft_matsize(ptr))
 	{
 		if (!ft_str_is_numeric(ptr[i]) || !ft_is_int(ptr[i]))
 			exit (ft_putstr_fd(ERROR_MESSAGE, STDERR_FILENO));
 		i++;
-	}	
-	//printf("size 2:%ld\n", ft_matsize(ptr));
+	}
 	if (!ft_str_norepeat_in_mat(ptr))
 		exit (ft_putstr_fd(ERROR_MESSAGE, STDERR_FILENO));
-	//printf("size 3:%ld\n", ft_matsize(ptr));
 	return ;
 }
 

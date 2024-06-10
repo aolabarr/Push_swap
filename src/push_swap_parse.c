@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 19:23:20 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/10 11:25:20 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/10 12:17:46 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,22 +26,9 @@ t_list	*manage_input_data(int ac, char **av)
 		ptr = copy_arguments(ac, av);
 	if (!ptr)
 		exit(EXITCODE);
-	/*
-	size_t i = 0;
-	printf("prueba 0\n");
-	while (i < ft_matsize(ptr))
-	{
-		printf("%s\n", ptr[i]);
-		i++;
-	}
-	*/
-	//printf("prueba 1\n");
 	check_errors(ptr);
-	//printf("prueba 2\n");
 	stack = create_stack(ptr);
 	ft_free_mat(ptr, ft_matsize(ptr));
-	//printf("prueba 3\n");
-	//ft_lst_putnbr_fd(stack, STDOUT_FILENO);
 	return (stack);
 }
 
@@ -49,7 +36,7 @@ t_list	*create_stack(char **ptr)
 {
 	t_list	*lst;
 	t_list	*node;
-	size_t		i;
+	size_t	i;
 
 	i = 0;
 	lst = ftps_lstnew(ft_atoi(ptr[i++]));
@@ -62,7 +49,7 @@ t_list	*create_stack(char **ptr)
 		{
 			ftps_lstclear(&lst, &free);
 			exit(EXITCODE);
-		}	
+		}
 		ftps_lstadd_back(&lst, node);
 	}
 	if (ptr[0] != NULL)
@@ -79,7 +66,6 @@ char	**copy_arguments(int ac, char **av)
 	if (!ptr)
 		return (NULL);
 	i = 0;
-	//printf("ac: %d\n", ac);
 	while (i < ac - 1)
 	{
 		ptr[i] = malloc(sizeof(char *));
