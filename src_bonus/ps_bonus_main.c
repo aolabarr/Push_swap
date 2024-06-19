@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 15:20:26 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/19 11:47:51 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/19 11:57:43 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -32,6 +32,7 @@ int	main(int ac, char **av)
 	write_result(stack_a, *stack_b);
 	ftps_lstclear(&stack_a, &free);
 	ftps_lstclear(stack_b, &free);
+	free(stack_a);
 	free(stack_b);
 	return (0);
 }
