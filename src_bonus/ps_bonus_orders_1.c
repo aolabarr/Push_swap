@@ -32,6 +32,7 @@ void	rotate_bn(t_list **stk)
 	t_list	*tmp;
 	t_list	*last;
 
+	printf("Prueba E\n");
 	tmp = (*stk)->next;
 	last = ftps_lstlast(*stk);
 	last->next = *stk;

@@ -1,0 +1,14 @@
+# Target labels
+ sfml-populate
+# Source files and their labels
+/home/aolabarr/01_cursus/02_repo/push_swap_v1/push_swap_visualizer/build/_deps/sfml-subbuild/CMakeFiles/sfml-populate
+/home/aolabarr/01_cursus/02_repo/push_swap_v1/push_swap_visualizer/build/_deps/sfml-subbuild/CMakeFiles/sfml-populate.rule
+/home/aolabarr/01_cursus/02_repo/push_swap_v1/push_swap_visualizer/build/_deps/sfml-subbuild/CMakeFiles/sfml-populate-complete.rule
+/home/aolabarr/01_cursus/02_repo/push_swap_v1/push_swap_visualizer/build/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-build.rule
+/home/aolabarr/01_cursus/02_repo/push_swap_v1/push_swap_visualizer/build/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-configure.rule
+/home/aolabarr/01_cursus/02_repo/push_swap_v1/push_swap_visualizer/build/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-download.rule
+/home/aolabarr/01_cursus/02_repo/push_swap_v1/push_swap_visualizer/build/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-install.rule
+/home/aolabarr/01_cursus/02_repo/push_swap_v1/push_swap_visualizer/build/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-mkdir.rule
+/home/aolabarr/01_cursus/02_repo/push_swap_v1/push_swap_visualizer/build/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-patch.rule
+/home/aolabarr/01_cursus/02_repo/push_swap_v1/push_swap_visualizer/build/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-test.rule
+/home/aolabarr/01_cursus/02_repo/push_swap_v1/push_swap_visualizer/build/_deps/sfml-subbuild/sfml-populate-prefix/src/sfml-populate-stamp/sfml-populate-update.rule

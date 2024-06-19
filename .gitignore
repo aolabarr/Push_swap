@@ -9,4 +9,5 @@ trace.txt
 
 comments.c
 
-testers/
+#testers/
+testers/push_swap_visualizer/

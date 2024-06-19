@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 15:20:26 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/10 17:00:08 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/19 10:57:36 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,22 +18,16 @@ int	main(int ac, char **av)
 	t_list	*stack_a;
 	t_list	**stack_b;
 	char	**ords;
-	size_t	i;
 
 	ords = read_stdin();
 	if (!ords)
 		exit(EXITCODE);
-	i = 0;
 	stack_a = manage_input_data(ac, av);
 	stack_b = malloc(sizeof(t_list *));
 	if (!stack_b)
 		exit(EXITCODE);
 	*stack_b = NULL;
-	while (i < ft_matsize(ords))
-	{
-		exe_order(&stack_a, stack_b, ords[i]);
-		i++;
-	}
+	handle_orders(&stack_a, stack_b, ords);
 	ft_free_mat(ords, ft_matsize(ords));
 	write_result(stack_a, *stack_b);
 	ftps_lstclear(&stack_a, &free);
@@ -103,5 +97,19 @@ void	write_result(t_list *stack_a, t_list *stack_b)
 		ft_putendl_fd("OK", STDOUT_FILENO);
 	else
 		ft_putendl_fd("KO", STDOUT_FILENO);
+	return ;
+}
+
+void	handle_orders(t_list **stack_a, t_list **stack_b, char **ords)
+{
+	size_t	i;
+
+	i = 0;
+	while (i < ft_matsize(ords))
+	{
+		exe_order(stack_a, stack_b, ords[i]);
+		i++;
+		printf("i: %ld\t%ld\tord: %s\n", i, ft_matsize(ords), ords[i]);
+	}
 	return ;
 }
