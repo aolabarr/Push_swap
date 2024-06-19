@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/06/08 15:20:26 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/19 10:57:36 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/19 11:47:51 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -109,7 +109,6 @@ void	handle_orders(t_list **stack_a, t_list **stack_b, char **ords)
 	{
 		exe_order(stack_a, stack_b, ords[i]);
 		i++;
-		printf("i: %ld\t%ld\tord: %s\n", i, ft_matsize(ords), ords[i]);
 	}
 	return ;
 }
