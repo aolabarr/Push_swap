@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 20:46:56 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/10 12:13:44 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/29 13:12:14 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,20 @@ int	ft_str_is_numeric(char *str)
 
 int	ft_is_int(char *str)
 {
-	if (ft_strlen(str) >= 10)
+	if (str[0] != '-' && ft_strlen(str) > 10)
+		return (0);
+	else if (str[0] != '-' && ft_strlen(str) == 10)
+	{
 		if (ft_strncmp(MAXINT_STR, str, ft_strlen(str)) < 0)
 			return (0);
-	if (str[0] == '-' && ft_strlen(str) >= 11)
+	}
+	else if (str[0] == '-' && ft_strlen(str) > 11)
+		return (0);
+	else if (str[0] == '-' && ft_strlen(str) == 11)
+	{
 		if (ft_strncmp(MININT_STR, str, ft_strlen(str)) < 0)
 			return (0);
+	}
 	return (1);
 }
 

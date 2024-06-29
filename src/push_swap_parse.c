@@ -6,7 +6,7 @@
 /*   By: aolabarr <aolabarr@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/04/13 19:23:20 by aolabarr          #+#    #+#             */
-/*   Updated: 2024/06/10 12:17:46 by aolabarr         ###   ########.fr       */
+/*   Updated: 2024/06/29 10:15:38 by aolabarr         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ t_list	*manage_input_data(int ac, char **av)
 	char	**ptr;
 
 	stack = NULL;
+	ptr = NULL;
 	if (ac < 2)
 		exit (EXITCODE);
 	else if (ac == 2)
